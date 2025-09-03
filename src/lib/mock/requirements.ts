@@ -1,0 +1,12 @@
+import { RequirementRow } from "../types"
+
+export const requirementsMock: RequirementRow[] = [
+  { id: "r1", title: "High-Grade Motor Oil 5W-30 for Fleet", buyer: "TransLogistics Corp", quantity: "2000L", urgency: "High", status: "Open", quotes: 5, deadline: "2024-11-15", postedAt: "2024-11-08" },
+  { id: "r2", title: "Industrial Hydraulic Fluid ISO 32", buyer: "Manufacturing Solutions Ltd", quantity: "500L", urgency: "Medium", status: "Quoted", quotes: 12, deadline: "2024-11-20", postedAt: "2024-11-07" },
+  { id: "r3", title: "Premium Gear Oil for Mining Equipment", buyer: "MineOp Industries", quantity: "1500L", urgency: "Urgent", status: "Open", quotes: 3, deadline: "2024-11-12", postedAt: "2024-11-06" },
+  { id: "r4", title: "Brake Fluid DOT 4 for Automotive", buyer: "AutoService Network", quantity: "800L", urgency: "Low", status: "Closed", quotes: 8, deadline: "2024-11-25", postedAt: "2024-11-05" },
+  { id: "r5", title: "Marine Engine Oil SAE 40", buyer: "Coastal Shipping Co", quantity: "1200L", urgency: "Medium", status: "Quoted", quotes: 6, deadline: "2024-11-18", postedAt: "2024-11-04" },
+  { id: "r6", title: "Transmission Fluid for Heavy Machinery", buyer: "Construction Dynamics", quantity: "600L", urgency: "High", status: "Open", quotes: 9, deadline: "2024-11-14", postedAt: "2024-11-03" },
+  { id: "r7", title: "Coolant Concentrate for Data Centers", buyer: "TechHub Solutions", quantity: "300L", urgency: "Low", status: "Quoted", quotes: 4, deadline: "2024-11-22", postedAt: "2024-11-02" },
+  { id: "r8", title: "Diesel Engine Oil 15W-40 Bulk", buyer: "Transport Alliance", quantity: "3000L", urgency: "Urgent", status: "Open", quotes: 7, deadline: "2024-11-11", postedAt: "2024-11-01" },
+]

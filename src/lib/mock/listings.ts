@@ -1,0 +1,12 @@
+import { ListingRow } from "../types"
+
+export const listingsMock: ListingRow[] = [
+  { id: "l1", product: "Engine Oil 5W-30 Premium", seller: "ABC Petrochem Ltd", type: "Fixed", basePrice: 85.50, moq: "100L", status: "Pending", submittedAt: "2024-11-08" },
+  { id: "l2", product: "Gear Oil 80W-90", seller: "XYZ Lubricants Pvt Ltd", type: "Bidding", basePrice: 120.00, moq: "50L", status: "Approved", submittedAt: "2024-11-07" },
+  { id: "l3", product: "Brake Fluid DOT4", seller: "DEF Oil Solutions", type: "Negotiation", basePrice: 45.75, moq: "200L", status: "Rejected", submittedAt: "2024-11-06" },
+  { id: "l4", product: "Hydraulic Oil ISO 46", seller: "Global Petroleum Corp", type: "Fixed", basePrice: 95.00, moq: "150L", status: "Approved", submittedAt: "2024-11-05" },
+  { id: "l5", product: "Transmission Fluid ATF", seller: "Industrial Oils Ltd", type: "Bidding", basePrice: 110.25, moq: "75L", status: "Pending", submittedAt: "2024-11-04" },
+  { id: "l6", product: "Coolant Concentrate", seller: "Premium Lubricants", type: "Negotiation", basePrice: 32.80, moq: "300L", status: "Approved", submittedAt: "2024-11-03" },
+  { id: "l7", product: "Diesel Engine Oil 15W-40", seller: "Eco Fuel Solutions", type: "Fixed", basePrice: 78.90, moq: "120L", status: "Pending", submittedAt: "2024-11-02" },
+  { id: "l8", product: "Marine Oil SAE 30", seller: "Heavy Machinery Oils", type: "Bidding", basePrice: 135.60, moq: "60L", status: "Rejected", submittedAt: "2024-11-01" },
+]

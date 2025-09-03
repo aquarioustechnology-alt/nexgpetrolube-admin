@@ -1,0 +1,51 @@
+// Mock data for integrations
+export const integrationsMock = [
+  {
+    id: 1,
+    name: "Stripe",
+    type: "payment",
+    connected: true,
+    status: "active",
+    lastEvent: "2024-01-15T14:30:00Z",
+  },
+  {
+    id: 2,
+    name: "PayPal",
+    type: "payment",
+    connected: true,
+    status: "active",
+    lastEvent: "2024-01-15T13:45:00Z",
+  },
+  {
+    id: 3,
+    name: "Razorpay",
+    type: "payment",
+    connected: true,
+    status: "error",
+    lastEvent: "2024-01-15T12:15:00Z",
+  },
+  {
+    id: 4,
+    name: "AWS S3",
+    type: "storage",
+    connected: true,
+    status: "active",
+    lastEvent: "2024-01-15T10:30:00Z",
+  },
+  {
+    id: 5,
+    name: "Google Analytics",
+    type: "analytics",
+    connected: true,
+    status: "active",
+    lastEvent: "2024-01-15T09:20:00Z",
+  },
+  {
+    id: 6,
+    name: "SMS Gateway",
+    type: "communication",
+    connected: false,
+    status: "pending",
+    lastEvent: "2024-01-10T11:45:00Z",
+  },
+];

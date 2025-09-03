@@ -1,0 +1,51 @@
+// Mock data for commission rules
+export const rulesMock = [
+  {
+    id: "COM001",
+    category: "Engine Oils",
+    subcategory: "Synthetic",
+    brand: "Castrol",
+    rate: 3.5,
+    effectiveDate: "2024-01-01",
+    active: true,
+    pending: false,
+    updatedAt: "2024-01-15",
+    scopes: 3
+  },
+  {
+    id: "COM002",
+    category: "Gear Oils",
+    subcategory: "Mineral",
+    brand: "All Brands",
+    rate: 2.8,
+    effectiveDate: "2024-01-01",
+    active: true,
+    pending: false,
+    updatedAt: "2024-01-14",
+    scopes: 2
+  },
+  {
+    id: "COM003",
+    category: "Brake Fluids",
+    subcategory: "DOT4",
+    brand: "All Brands",
+    rate: 4.2,
+    effectiveDate: "2024-01-01",
+    active: true,
+    pending: false,
+    updatedAt: "2024-01-13",
+    scopes: 1
+  },
+  {
+    id: "COM004",
+    category: "Coolants",
+    subcategory: "All Types",
+    brand: "Shell",
+    rate: 3.0,
+    effectiveDate: "2024-01-01",
+    active: false,
+    pending: true,
+    updatedAt: "2024-01-15",
+    scopes: 2
+  }
+]

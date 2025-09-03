@@ -1,0 +1,43 @@
+// Mock data for invoices
+export const invoicesMock = [
+  {
+    id: "INV001",
+    title: "Engine Oil Deal",
+    buyer: "ABC Petrochem Ltd",
+    seller: "XYZ Lubricants",
+    amount: 15000,
+    dueDate: "2024-01-18",
+    dueToday: true,
+    overdue: false,
+    paidThisMonth: true,
+    status: "pending",
+    commission: 450
+  },
+  {
+    id: "INV002",
+    title: "Brake Fluid Auction",
+    buyer: "DEF Oil Solutions",
+    seller: "GHI Petroleum",
+    amount: 8500,
+    dueDate: "2024-01-16",
+    dueToday: false,
+    overdue: true,
+    paidThisMonth: false,
+    status: "overdue",
+    commission: 255
+  },
+  {
+    id: "INV003",
+    title: "Gear Oil Deal",
+    buyer: "JKL Fuel Distributors",
+    seller: "MNO Oil Solutions",
+    amount: 12000,
+    dueDate: "2024-01-20",
+    dueToday: false,
+    overdue: false,
+    paidThisMonth: true,
+    status: "paid",
+    commission: 360,
+    paidDate: "2024-01-14"
+  }
+]
