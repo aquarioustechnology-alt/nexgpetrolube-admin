@@ -9,10 +9,10 @@ interface SidebarState {
 
 export const useSidebar = create<SidebarState>()(
   persist(
-    (set) => ({
+    set => ({
       isCollapsed: false,
-      toggle: () => set((state) => ({ isCollapsed: !state.isCollapsed })),
-      setCollapsed: (collapsed) => set({ isCollapsed: collapsed }),
+      toggle: () => set(state => ({ isCollapsed: !state.isCollapsed })),
+      setCollapsed: collapsed => set({ isCollapsed: collapsed }),
     }),
     {
       name: 'nexg-sidebar',

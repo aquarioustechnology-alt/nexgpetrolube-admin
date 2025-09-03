@@ -1,26 +1,35 @@
-"use client"
+'use client'
 
-import { ColumnDef } from "@tanstack/react-table"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { MoreHorizontal, CheckCircle, X, Eye, History } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import type { ListingRow } from "@/lib/types"
+import { ColumnDef } from '@tanstack/react-table'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { MoreHorizontal, CheckCircle, X, Eye, History } from 'lucide-react'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import type { ListingRow } from '@/lib/types'
 
 export const listingsColumns: ColumnDef<ListingRow>[] = [
   {
-    accessorKey: "product",
-    header: "Product",
+    accessorKey: 'product',
+    header: 'Product',
     cell: ({ row }) => (
       <div>
         <p className="font-medium">{row.original.product}</p>
-        <p className="text-muted-foreground text-xs">Seller: {row.original.seller}</p>
+        <p className="text-xs text-muted-foreground">
+          Seller: {row.original.seller}
+        </p>
       </div>
     ),
   },
   {
-    accessorKey: "type",
-    header: "Type",
+    accessorKey: 'type',
+    header: 'Type',
     cell: ({ getValue }) => {
       const v = getValue<string>()
       const variant = v.toLowerCase() as any
@@ -29,18 +38,20 @@ export const listingsColumns: ColumnDef<ListingRow>[] = [
     enableColumnFilter: true,
   },
   {
-    accessorKey: "basePrice",
-    header: "Base Price",
-    cell: ({ getValue }) => <span className="nums">₹{getValue<number>().toFixed(2)}</span>,
+    accessorKey: 'basePrice',
+    header: 'Base Price',
+    cell: ({ getValue }) => (
+      <span className="nums">₹{getValue<number>().toFixed(2)}</span>
+    ),
   },
   {
-    accessorKey: "moq",
-    header: "MOQ",
+    accessorKey: 'moq',
+    header: 'MOQ',
     cell: ({ getValue }) => <span className="nums">{getValue<number>()}</span>,
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: 'status',
+    header: 'Status',
     cell: ({ getValue }) => {
       const v = getValue<string>()
       const variant = v.toLowerCase() as any
@@ -49,29 +60,33 @@ export const listingsColumns: ColumnDef<ListingRow>[] = [
     enableColumnFilter: true,
   },
   {
-    accessorKey: "submittedAt",
-    header: "Submitted",
-    cell: ({ getValue }) => <span className="nums">{new Date(getValue<string>()).toLocaleDateString()}</span>,
+    accessorKey: 'submittedAt',
+    header: 'Submitted',
+    cell: ({ getValue }) => (
+      <span className="nums">
+        {new Date(getValue<string>()).toLocaleDateString()}
+      </span>
+    ),
   },
   {
-    id: "actions",
-    header: "",
+    id: 'actions',
+    header: '',
     cell: ({ row }) => {
       const status = row.original.status
       return (
         <div className="flex items-center gap-1">
           <Button size="sm" variant="ghost" className="h-8 px-2">
-            <Eye className="h-4 w-4 mr-1" />
+            <Eye className="mr-1 h-4 w-4" />
             View
           </Button>
-          {status === "Pending" && (
+          {status === 'Pending' && (
             <>
               <Button size="sm" variant="default" className="h-8 px-2">
-                <CheckCircle className="h-4 w-4 mr-1" />
+                <CheckCircle className="mr-1 h-4 w-4" />
                 Approve
               </Button>
               <Button size="sm" variant="seller" className="h-8 px-2">
-                <X className="h-4 w-4 mr-1" />
+                <X className="mr-1 h-4 w-4" />
                 Reject
               </Button>
             </>
@@ -90,7 +105,9 @@ export const listingsColumns: ColumnDef<ListingRow>[] = [
               </DropdownMenuItem>
               <DropdownMenuItem>Edit</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-600">
+                Delete
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

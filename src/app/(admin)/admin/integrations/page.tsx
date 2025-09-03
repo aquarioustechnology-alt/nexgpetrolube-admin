@@ -1,27 +1,39 @@
-"use client"
+'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { 
-  Search, 
-  Link, 
-  CheckCircle, 
-  AlertTriangle, 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import {
+  Search,
+  Link,
+  CheckCircle,
+  AlertTriangle,
   Clock,
   Settings,
   Eye,
   RefreshCw,
   Plus,
   Trash2,
-  ExternalLink
+  ExternalLink,
 } from 'lucide-react'
-import { KpiRow } from "@/components/kpi/kpi-row"
-import { KpiCard } from "@/components/kpi/kpi-card"
-import { KPI } from "@/lib/page-kpis"
-import { integrationsMock } from "@/lib/mock/integrations"
+import { KpiRow } from '@/components/kpi/kpi-row'
+import { KpiCard } from '@/components/kpi/kpi-card'
+import { KPI } from '@/lib/page-kpis'
+import { integrationsMock } from '@/lib/mock/integrations'
 
 export default function IntegrationsPage() {
   // Use the KPI mapping
@@ -39,12 +51,12 @@ export default function IntegrationsPage() {
       {/* KPI Row */}
       <KpiRow>
         {kpis.map((k, i) => (
-          <KpiCard 
-            key={i} 
-            label={k.label} 
-            value={k.value} 
-            icon={k.icon} 
-            hint={k.hint} 
+          <KpiCard
+            key={i}
+            label={k.label}
+            value={k.value}
+            icon={k.icon}
+            hint={k.hint}
           />
         ))}
       </KpiRow>
@@ -53,14 +65,16 @@ export default function IntegrationsPage() {
       <div className="grid gap-4 md:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Integrations</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Total Integrations
+            </CardTitle>
             <Link className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">18</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active</CardTitle>
@@ -70,7 +84,7 @@ export default function IntegrationsPage() {
             <div className="text-2xl font-bold">15</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Issues</CardTitle>
@@ -80,7 +94,7 @@ export default function IntegrationsPage() {
             <div className="text-2xl font-bold">3</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Pending</CardTitle>
@@ -106,12 +120,12 @@ export default function IntegrationsPage() {
           </CardHeader>
           <CardContent>
             <Button className="w-full">
-              <Plus className="h-4 w-4 mr-2" />
+              <Plus className="mr-2 h-4 w-4" />
               Add Integration
             </Button>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -124,7 +138,7 @@ export default function IntegrationsPage() {
           </CardHeader>
           <CardContent>
             <Button className="w-full" variant="outline">
-              <RefreshCw className="h-4 w-4 mr-2" />
+              <RefreshCw className="mr-2 h-4 w-4" />
               Sync Now
             </Button>
           </CardContent>
@@ -141,18 +155,18 @@ export default function IntegrationsPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="border rounded-lg p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <span className="text-blue-600 font-bold text-lg">S</span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
+                    <span className="text-lg font-bold text-blue-600">S</span>
                   </div>
                   <div>
                     <h3 className="font-semibold">Stripe</h3>
                     <p className="text-sm text-muted-foreground">
                       Credit card and digital wallet processing
                     </p>
-                    <div className="flex gap-2 mt-2">
+                    <div className="mt-2 flex gap-2">
                       <Badge variant="default">Active</Badge>
                       <Badge variant="outline">Production</Badge>
                     </div>
@@ -160,33 +174,33 @@ export default function IntegrationsPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Settings className="h-4 w-4 mr-1" />
+                    <Settings className="mr-1 h-4 w-4" />
                     Configure
                   </Button>
                   <Button size="sm" variant="outline">
-                    <RefreshCw className="h-4 w-4 mr-1" />
+                    <RefreshCw className="mr-1 h-4 w-4" />
                     Test
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <span className="text-green-600 font-bold text-lg">P</span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
+                    <span className="text-lg font-bold text-green-600">P</span>
                   </div>
                   <div>
                     <h3 className="font-semibold">PayPal</h3>
                     <p className="text-sm text-muted-foreground">
                       Alternative payment method
                     </p>
-                    <div className="flex gap-2 mt-2">
+                    <div className="mt-2 flex gap-2">
                       <Badge variant="default">Active</Badge>
                       <Badge variant="outline">Production</Badge>
                     </div>
@@ -194,33 +208,33 @@ export default function IntegrationsPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Settings className="h-4 w-4 mr-1" />
+                    <Settings className="mr-1 h-4 w-4" />
                     Configure
                   </Button>
                   <Button size="sm" variant="outline">
-                    <RefreshCw className="h-4 w-4 mr-1" />
+                    <RefreshCw className="mr-1 h-4 w-4" />
                     Test
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                    <span className="text-orange-600 font-bold text-lg">R</span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100">
+                    <span className="text-lg font-bold text-orange-600">R</span>
                   </div>
                   <div>
                     <h3 className="font-semibold">Razorpay</h3>
                     <p className="text-sm text-muted-foreground">
                       Indian payment gateway integration
                     </p>
-                    <div className="flex gap-2 mt-2">
+                    <div className="mt-2 flex gap-2">
                       <Badge variant="secondary">Pending</Badge>
                       <Badge variant="outline">Sandbox</Badge>
                     </div>
@@ -228,15 +242,15 @@ export default function IntegrationsPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Settings className="h-4 w-4 mr-1" />
+                    <Settings className="mr-1 h-4 w-4" />
                     Configure
                   </Button>
                   <Button size="sm" variant="outline">
-                    <RefreshCw className="h-4 w-4 mr-1" />
+                    <RefreshCw className="mr-1 h-4 w-4" />
                     Test
                   </Button>
                 </div>
@@ -258,14 +272,16 @@ export default function IntegrationsPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-blue-100 rounded flex items-center justify-center">
-                    <span className="text-blue-600 font-bold text-xs">M</span>
+                  <div className="flex h-8 w-8 items-center justify-center rounded bg-blue-100">
+                    <span className="text-xs font-bold text-blue-600">M</span>
                   </div>
                   <div>
                     <h4 className="font-medium">Mailgun</h4>
-                    <p className="text-sm text-muted-foreground">Email delivery service</p>
+                    <p className="text-sm text-muted-foreground">
+                      Email delivery service
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -275,15 +291,17 @@ export default function IntegrationsPage() {
                   </Button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-green-100 rounded flex items-center justify-center">
-                    <span className="text-green-600 font-bold text-xs">T</span>
+                  <div className="flex h-8 w-8 items-center justify-center rounded bg-green-100">
+                    <span className="text-xs font-bold text-green-600">T</span>
                   </div>
                   <div>
                     <h4 className="font-medium">Twilio</h4>
-                    <p className="text-sm text-muted-foreground">SMS and voice services</p>
+                    <p className="text-sm text-muted-foreground">
+                      SMS and voice services
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -293,15 +311,17 @@ export default function IntegrationsPage() {
                   </Button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-purple-100 rounded flex items-center justify-center">
-                    <span className="text-purple-600 font-bold text-xs">S</span>
+                  <div className="flex h-8 w-8 items-center justify-center rounded bg-purple-100">
+                    <span className="text-xs font-bold text-purple-600">S</span>
                   </div>
                   <div>
                     <h4 className="font-medium">Slack</h4>
-                    <p className="text-sm text-muted-foreground">Team notifications</p>
+                    <p className="text-sm text-muted-foreground">
+                      Team notifications
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -325,14 +345,16 @@ export default function IntegrationsPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-blue-100 rounded flex items-center justify-center">
-                    <span className="text-blue-600 font-bold text-xs">G</span>
+                  <div className="flex h-8 w-8 items-center justify-center rounded bg-blue-100">
+                    <span className="text-xs font-bold text-blue-600">G</span>
                   </div>
                   <div>
                     <h4 className="font-medium">Google Analytics</h4>
-                    <p className="text-sm text-muted-foreground">Website analytics</p>
+                    <p className="text-sm text-muted-foreground">
+                      Website analytics
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -342,15 +364,17 @@ export default function IntegrationsPage() {
                   </Button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
-                    <span className="text-red-600 font-bold text-xs">S</span>
+                  <div className="flex h-8 w-8 items-center justify-center rounded bg-red-100">
+                    <span className="text-xs font-bold text-red-600">S</span>
                   </div>
                   <div>
                     <h4 className="font-medium">Sentry</h4>
-                    <p className="text-sm text-muted-foreground">Error tracking</p>
+                    <p className="text-sm text-muted-foreground">
+                      Error tracking
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -360,15 +384,17 @@ export default function IntegrationsPage() {
                   </Button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-yellow-100 rounded flex items-center justify-center">
-                    <span className="text-yellow-600 font-bold text-xs">N</span>
+                  <div className="flex h-8 w-8 items-center justify-center rounded bg-yellow-100">
+                    <span className="text-xs font-bold text-yellow-600">N</span>
                   </div>
                   <div>
                     <h4 className="font-medium">New Relic</h4>
-                    <p className="text-sm text-muted-foreground">Performance monitoring</p>
+                    <p className="text-sm text-muted-foreground">
+                      Performance monitoring
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -393,7 +419,7 @@ export default function IntegrationsPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 border rounded-lg">
+            <div className="flex items-center justify-between rounded-lg border p-4">
               <div className="space-y-2">
                 <h3 className="font-semibold">Webhook Endpoints</h3>
                 <p className="text-sm text-muted-foreground">
@@ -406,17 +432,17 @@ export default function IntegrationsPage() {
               </div>
               <div className="flex gap-2">
                 <Button variant="outline">
-                  <Plus className="h-4 w-4 mr-2" />
+                  <Plus className="mr-2 h-4 w-4" />
                   Add Webhook
                 </Button>
                 <Button variant="outline">
-                  <Eye className="h-4 w-4 mr-2" />
+                  <Eye className="mr-2 h-4 w-4" />
                   View All
                 </Button>
               </div>
             </div>
-            
-            <div className="flex items-center justify-between p-4 border rounded-lg">
+
+            <div className="flex items-center justify-between rounded-lg border p-4">
               <div className="space-y-2">
                 <h3 className="font-semibold">API Keys</h3>
                 <p className="text-sm text-muted-foreground">
@@ -429,17 +455,17 @@ export default function IntegrationsPage() {
               </div>
               <div className="flex gap-2">
                 <Button variant="outline">
-                  <Plus className="h-4 w-4 mr-2" />
+                  <Plus className="mr-2 h-4 w-4" />
                   Generate Key
                 </Button>
                 <Button variant="outline">
-                  <Eye className="h-4 w-4 mr-2" />
+                  <Eye className="mr-2 h-4 w-4" />
                   Manage Keys
                 </Button>
               </div>
             </div>
-            
-            <div className="flex items-center justify-between p-4 border rounded-lg">
+
+            <div className="flex items-center justify-between rounded-lg border p-4">
               <div className="space-y-2">
                 <h3 className="font-semibold">Rate Limiting</h3>
                 <p className="text-sm text-muted-foreground">
@@ -452,11 +478,11 @@ export default function IntegrationsPage() {
               </div>
               <div className="flex gap-2">
                 <Button variant="outline">
-                  <Settings className="h-4 w-4 mr-2" />
+                  <Settings className="mr-2 h-4 w-4" />
                   Configure
                 </Button>
                 <Button variant="outline">
-                  <Eye className="h-4 w-4 mr-2" />
+                  <Eye className="mr-2 h-4 w-4" />
                   View Rules
                 </Button>
               </div>

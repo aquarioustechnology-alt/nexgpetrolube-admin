@@ -1,9 +1,9 @@
-export type UserRole = "Buyer" | "Seller" | "Both"
-export type KycStatus = "Pending" | "Verified" | "Rejected"
-export type ListingStatus = "Pending" | "Approved" | "Rejected"
-export type ListingType = "Fixed" | "Negotiation" | "Bidding"
-export type RequirementStatus = "Open" | "Quoted" | "Closed"
-export type RequirementUrgency = "Low" | "Medium" | "High" | "Urgent"
+export type UserRole = 'Buyer' | 'Seller' | 'Both'
+export type KycStatus = 'Pending' | 'Verified' | 'Rejected'
+export type ListingStatus = 'Pending' | 'Approved' | 'Rejected'
+export type ListingType = 'Fixed' | 'Negotiation' | 'Bidding'
+export type RequirementStatus = 'Open' | 'Quoted' | 'Closed'
+export type RequirementUrgency = 'Low' | 'Medium' | 'High' | 'Urgent'
 
 export type UserRow = {
   id: string

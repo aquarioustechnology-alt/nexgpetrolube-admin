@@ -1,24 +1,36 @@
-"use client"
+'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { 
-  Search, 
-  CreditCard, 
-  Plus, 
-  Settings, 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import {
+  Search,
+  CreditCard,
+  Plus,
+  Settings,
   Eye,
   Edit,
   Trash2,
-  Calculator
+  Calculator,
 } from 'lucide-react'
-import { KpiRow } from "@/components/kpi/kpi-row"
-import { KpiCard } from "@/components/kpi/kpi-card"
-import { KPI } from "@/lib/page-kpis"
-import { rulesMock } from "@/lib/mock/commissions"
+import { KpiRow } from '@/components/kpi/kpi-row'
+import { KpiCard } from '@/components/kpi/kpi-card'
+import { KPI } from '@/lib/page-kpis'
+import { rulesMock } from '@/lib/mock/commissions'
 
 export default function CommissionRulesPage() {
   // Use the KPI mapping
@@ -29,19 +41,20 @@ export default function CommissionRulesPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Commission Rules</h1>
         <p className="text-muted-foreground">
-          Configure commission rates by product, category, sub-category, and brand.
+          Configure commission rates by product, category, sub-category, and
+          brand.
         </p>
       </div>
 
       {/* KPI Row */}
       <KpiRow>
         {kpis.map((k, i) => (
-          <KpiCard 
-            key={i} 
-            label={k.label} 
-            value={k.value} 
-            icon={k.icon} 
-            hint={k.hint} 
+          <KpiCard
+            key={i}
+            label={k.label}
+            value={k.value}
+            icon={k.icon}
+            hint={k.hint}
           />
         ))}
       </KpiRow>
@@ -70,7 +83,7 @@ export default function CommissionRulesPage() {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div>
               <label className="text-sm font-medium">Sub-category</label>
               <Select>
@@ -84,7 +97,7 @@ export default function CommissionRulesPage() {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div>
               <label className="text-sm font-medium">Brand</label>
               <Select>
@@ -99,20 +112,26 @@ export default function CommissionRulesPage() {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div>
               <label className="text-sm font-medium">Commission Rate (%)</label>
-              <Input type="number" placeholder="3.5" step="0.1" min="0" max="10" />
+              <Input
+                type="number"
+                placeholder="3.5"
+                step="0.1"
+                min="0"
+                max="10"
+              />
             </div>
           </div>
-          
-          <div className="flex gap-2 mt-4">
+
+          <div className="mt-4 flex gap-2">
             <Button>
-              <Plus className="h-4 w-4 mr-2" />
+              <Plus className="mr-2 h-4 w-4" />
               Create Rule
             </Button>
             <Button variant="outline">
-              <Calculator className="h-4 w-4 mr-2" />
+              <Calculator className="mr-2 h-4 w-4" />
               Preview Impact
             </Button>
           </div>
@@ -129,99 +148,105 @@ export default function CommissionRulesPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="border rounded-lg p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <h3 className="font-semibold">Engine Oils → Synthetic → Castrol</h3>
+                  <h3 className="font-semibold">
+                    Engine Oils → Synthetic → Castrol
+                  </h3>
                   <p className="text-sm text-muted-foreground">
                     Commission: 3.5% • Effective: Jan 1, 2024 • Status: Active
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="default">Active</Badge>
                     <Badge variant="outline">High Volume</Badge>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Calculator className="h-4 w-4 mr-1" />
+                    <Calculator className="mr-1 h-4 w-4" />
                     Impact
                   </Button>
                   <Button size="sm" variant="destructive">
-                    <Trash2 className="h-4 w-4 mr-1" />
+                    <Trash2 className="mr-1 h-4 w-4" />
                     Delete
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <h3 className="font-semibold">Gear Oils → Mineral → All Brands</h3>
+                  <h3 className="font-semibold">
+                    Gear Oils → Mineral → All Brands
+                  </h3>
                   <p className="text-sm text-muted-foreground">
                     Commission: 2.8% • Effective: Jan 1, 2024 • Status: Active
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="default">Active</Badge>
                     <Badge variant="outline">Standard Rate</Badge>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Calculator className="h-4 w-4 mr-1" />
+                    <Calculator className="mr-1 h-4 w-4" />
                     Impact
                   </Button>
                   <Button size="sm" variant="destructive">
-                    <Trash2 className="h-4 w-4 mr-1" />
+                    <Trash2 className="mr-1 h-4 w-4" />
                     Delete
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <h3 className="font-semibold">Brake Fluids → DOT4 → All Brands</h3>
+                  <h3 className="font-semibold">
+                    Brake Fluids → DOT4 → All Brands
+                  </h3>
                   <p className="text-sm text-muted-foreground">
                     Commission: 4.2% • Effective: Jan 1, 2024 • Status: Active
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="default">Active</Badge>
                     <Badge variant="outline">Premium Rate</Badge>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Calculator className="h-4 w-4 mr-1" />
+                    <Calculator className="mr-1 h-4 w-4" />
                     Impact
                   </Button>
                   <Button size="sm" variant="destructive">
-                    <Trash2 className="h-4 w-4 mr-1" />
+                    <Trash2 className="mr-1 h-4 w-4" />
                     Delete
                   </Button>
                 </div>

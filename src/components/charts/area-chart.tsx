@@ -1,6 +1,13 @@
-"use client"
+'use client'
 
-import { Area, AreaChart as RechartsAreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import {
+  Area,
+  AreaChart as RechartsAreaChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 
 interface AreaChartProps {
   data: any[]
@@ -10,12 +17,18 @@ interface AreaChartProps {
   height?: number
 }
 
-export function AreaChart({ data, dataKey, xAxisKey, color = "hsl(var(--primary))", height = 300 }: AreaChartProps) {
+export function AreaChart({
+  data,
+  dataKey,
+  xAxisKey,
+  color = 'hsl(var(--primary))',
+  height = 300,
+}: AreaChartProps) {
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsAreaChart data={data}>
-        <XAxis 
-          dataKey={xAxisKey} 
+        <XAxis
+          dataKey={xAxisKey}
           stroke="#888888"
           fontSize={12}
           tickLine={false}
@@ -26,9 +39,9 @@ export function AreaChart({ data, dataKey, xAxisKey, color = "hsl(var(--primary)
           fontSize={12}
           tickLine={false}
           axisLine={false}
-          tickFormatter={(value) => `${value}`}
+          tickFormatter={value => `${value}`}
         />
-        <Tooltip 
+        <Tooltip
           contentStyle={{
             backgroundColor: 'hsl(var(--popover))',
             border: '1px solid hsl(var(--border))',

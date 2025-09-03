@@ -1,24 +1,36 @@
-"use client"
+'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { 
-  Search, 
-  AlertTriangle, 
-  Clock, 
-  Users, 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import {
+  Search,
+  AlertTriangle,
+  Clock,
+  Users,
   Eye,
   MessageSquare,
   CheckCircle,
-  X
+  X,
 } from 'lucide-react'
-import { KpiRow } from "@/components/kpi/kpi-row"
-import { KpiCard } from "@/components/kpi/kpi-card"
-import { KPI } from "@/lib/page-kpis"
-import { disputesMock } from "@/lib/mock/disputes"
+import { KpiRow } from '@/components/kpi/kpi-row'
+import { KpiCard } from '@/components/kpi/kpi-card'
+import { KPI } from '@/lib/page-kpis'
+import { disputesMock } from '@/lib/mock/disputes'
 
 export default function DisputesPage() {
   // Use the KPI mapping
@@ -27,7 +39,9 @@ export default function DisputesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Disputes Management</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          Disputes Management
+        </h1>
         <p className="text-muted-foreground">
           Handle and resolve disputes arising from bidding and deals.
         </p>
@@ -36,12 +50,12 @@ export default function DisputesPage() {
       {/* KPI Row */}
       <KpiRow>
         {kpis.map((k, i) => (
-          <KpiCard 
-            key={i} 
-            label={k.label} 
-            value={k.value} 
-            icon={k.icon} 
-            hint={k.hint} 
+          <KpiCard
+            key={i}
+            label={k.label}
+            value={k.value}
+            icon={k.icon}
+            hint={k.hint}
           />
         ))}
       </KpiRow>
@@ -52,14 +66,11 @@ export default function DisputesPage() {
           <CardTitle>Filters & Search</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row">
             <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search disputes..."
-                  className="pl-8"
-                />
+                <Input placeholder="Search disputes..." className="pl-8" />
               </div>
             </div>
             <Select defaultValue="all">
@@ -94,23 +105,25 @@ export default function DisputesPage() {
       <Card>
         <CardHeader>
           <CardTitle>Disputes Queue</CardTitle>
-          <CardDescription>
-            Review and manage dispute cases
-          </CardDescription>
+          <CardDescription>Review and manage dispute cases</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="border rounded-lg p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <h3 className="font-semibold">Bidding Dispute - Engine Oil Auction</h3>
+                  <h3 className="font-semibold">
+                    Bidding Dispute - Engine Oil Auction
+                  </h3>
                   <p className="text-sm text-muted-foreground">
-                    Case #DIS001 • Buyer: ABC Petrochem Ltd • Seller: XYZ Lubricants • Opened: 2 hours ago
+                    Case #DIS001 • Buyer: ABC Petrochem Ltd • Seller: XYZ
+                    Lubricants • Opened: 2 hours ago
                   </p>
-                  <p className="text-sm bg-muted p-2 rounded mt-2">
-                    Buyer claims winning bid was not properly recorded. Seller disputes the claim.
+                  <p className="mt-2 rounded bg-muted p-2 text-sm">
+                    Buyer claims winning bid was not properly recorded. Seller
+                    disputes the claim.
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="secondary">Open</Badge>
                     <Badge variant="outline">Bidding Issue</Badge>
                     <Badge variant="destructive">High Priority</Badge>
@@ -118,32 +131,36 @@ export default function DisputesPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <MessageSquare className="h-4 w-4 mr-1" />
+                    <MessageSquare className="mr-1 h-4 w-4" />
                     Contact Parties
                   </Button>
                   <Button size="sm">
-                    <CheckCircle className="h-4 w-4 mr-1" />
+                    <CheckCircle className="mr-1 h-4 w-4" />
                     Resolve
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <h3 className="font-semibold">Quality Dispute - Brake Fluid</h3>
+                  <h3 className="font-semibold">
+                    Quality Dispute - Brake Fluid
+                  </h3>
                   <p className="text-sm text-muted-foreground">
-                    Case #DIS002 • Buyer: DEF Oil Solutions • Seller: GHI Petroleum • Opened: 1 day ago
+                    Case #DIS002 • Buyer: DEF Oil Solutions • Seller: GHI
+                    Petroleum • Opened: 1 day ago
                   </p>
-                  <p className="text-sm bg-muted p-2 rounded mt-2">
-                    Buyer reports product does not meet specifications. Seller claims product is within tolerance.
+                  <p className="mt-2 rounded bg-muted p-2 text-sm">
+                    Buyer reports product does not meet specifications. Seller
+                    claims product is within tolerance.
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="secondary">Investigating</Badge>
                     <Badge variant="outline">Quality Issue</Badge>
                     <Badge variant="outline">Medium Priority</Badge>
@@ -151,32 +168,36 @@ export default function DisputesPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <MessageSquare className="h-4 w-4 mr-1" />
+                    <MessageSquare className="mr-1 h-4 w-4" />
                     Contact Parties
                   </Button>
                   <Button size="sm">
-                    <CheckCircle className="h-4 w-4 mr-1" />
+                    <CheckCircle className="mr-1 h-4 w-4" />
                     Resolve
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
-                  <h3 className="font-semibold">Payment Dispute - Gear Oil Deal</h3>
+                  <h3 className="font-semibold">
+                    Payment Dispute - Gear Oil Deal
+                  </h3>
                   <p className="text-sm text-muted-foreground">
-                    Case #DIS003 • Buyer: JKL Fuel Distributors • Seller: MNO Oil Solutions • Opened: 3 days ago
+                    Case #DIS003 • Buyer: JKL Fuel Distributors • Seller: MNO
+                    Oil Solutions • Opened: 3 days ago
                   </p>
-                  <p className="text-sm bg-muted p-2 rounded mt-2">
-                    Seller claims payment not received. Buyer shows proof of payment. Bank investigation pending.
+                  <p className="mt-2 rounded bg-muted p-2 text-sm">
+                    Seller claims payment not received. Buyer shows proof of
+                    payment. Bank investigation pending.
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="default">Resolved</Badge>
                     <Badge variant="outline">Payment Issue</Badge>
                     <Badge variant="outline">Low Priority</Badge>
@@ -184,11 +205,11 @@ export default function DisputesPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <X className="h-4 w-4 mr-1" />
+                    <X className="mr-1 h-4 w-4" />
                     Close Case
                   </Button>
                 </div>

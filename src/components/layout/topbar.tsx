@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
@@ -8,18 +8,12 @@ import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { ThemeToggle } from './theme-toggle'
 import { CommandMenu } from '@/components/search/command-menu'
-import {
-  Search,
-  Bell,
-  User,
-  ChevronRight,
-  Package
-} from 'lucide-react'
+import { Search, Bell, User, ChevronRight, Package } from 'lucide-react'
 
 function Breadcrumb() {
   const pathname = usePathname()
   const segments = pathname.split('/').filter(Boolean)
-  
+
   if (segments.length === 0) return null
 
   return (
@@ -27,10 +21,12 @@ function Breadcrumb() {
       {segments.map((segment, index) => (
         <div key={index} className="flex items-center space-x-1">
           {index > 0 && <ChevronRight className="h-4 w-4" />}
-          <span className={cn(
-            "capitalize",
-            index === segments.length - 1 && "text-foreground font-medium"
-          )}>
+          <span
+            className={cn(
+              'capitalize',
+              index === segments.length - 1 && 'font-medium text-foreground'
+            )}
+          >
             {segment === 'admin' ? 'Dashboard' : segment.replace(/-/g, ' ')}
           </span>
         </div>
@@ -52,7 +48,7 @@ export function Topbar() {
         <Separator orientation="vertical" className="h-6" />
         <Breadcrumb />
       </div>
-      
+
       <div className="flex items-center space-x-4">
         <Button
           variant="ghost"
@@ -63,22 +59,22 @@ export function Topbar() {
           <Search className="h-4 w-4" />
           <span className="sr-only">Search</span>
         </Button>
-        
+
         <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
           <Bell className="h-4 w-4" />
           <span className="sr-only">Notifications</span>
         </Button>
-        
+
         <ThemeToggle />
-        
+
         <Separator orientation="vertical" className="h-6" />
-        
+
         <Button variant="ghost" size="sm" className="h-9 px-3">
-          <User className="h-4 w-4 mr-2" />
+          <User className="mr-2 h-4 w-4" />
           Admin User
         </Button>
       </div>
-      
+
       <CommandMenu open={searchOpen} onOpenChange={setSearchOpen} />
     </div>
   )

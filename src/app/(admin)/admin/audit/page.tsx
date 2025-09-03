@@ -1,27 +1,39 @@
-"use client"
+'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { 
-  Search, 
-  Shield, 
-  AlertTriangle, 
-  CheckCircle, 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import {
+  Search,
+  Shield,
+  AlertTriangle,
+  CheckCircle,
   Clock,
   Filter,
   Eye,
   Download,
   User,
   Calendar,
-  Activity
+  Activity,
 } from 'lucide-react'
-import { KpiRow } from "@/components/kpi/kpi-row"
-import { KpiCard } from "@/components/kpi/kpi-card"
-import { KPI } from "@/lib/page-kpis"
-import { auditMock } from "@/lib/mock/audit"
+import { KpiRow } from '@/components/kpi/kpi-row'
+import { KpiCard } from '@/components/kpi/kpi-card'
+import { KPI } from '@/lib/page-kpis'
+import { auditMock } from '@/lib/mock/audit'
 
 export default function AuditPage() {
   // Use the KPI mapping
@@ -30,7 +42,9 @@ export default function AuditPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Audit & Compliance</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          Audit & Compliance
+        </h1>
         <p className="text-muted-foreground">
           Monitor system activities, security events, and compliance status.
         </p>
@@ -39,12 +53,12 @@ export default function AuditPage() {
       {/* KPI Row */}
       <KpiRow>
         {kpis.map((k, i) => (
-          <KpiCard 
-            key={i} 
-            label={k.label} 
-            value={k.value} 
-            icon={k.icon} 
-            hint={k.hint} 
+          <KpiCard
+            key={i}
+            label={k.label}
+            value={k.value}
+            icon={k.icon}
+            hint={k.hint}
           />
         ))}
       </KpiRow>
@@ -60,17 +74,19 @@ export default function AuditPage() {
             <div className="text-2xl font-bold">2,847</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Security Alerts</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Security Alerts
+            </CardTitle>
             <AlertTriangle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">12</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Compliant</CardTitle>
@@ -80,10 +96,12 @@ export default function AuditPage() {
             <div className="text-2xl font-bold">98.5%</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Pending Reviews</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Pending Reviews
+            </CardTitle>
             <Clock className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -100,49 +118,43 @@ export default function AuditPage() {
               <Shield className="h-5 w-5" />
               Security Scan
             </CardTitle>
-            <CardDescription>
-              Run comprehensive security audit
-            </CardDescription>
+            <CardDescription>Run comprehensive security audit</CardDescription>
           </CardHeader>
           <CardContent>
             <Button className="w-full">
-              <Shield className="h-4 w-4 mr-2" />
+              <Shield className="mr-2 h-4 w-4" />
               Start Scan
             </Button>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Download className="h-5 w-5" />
               Export Logs
             </CardTitle>
-            <CardDescription>
-              Download audit logs for analysis
-            </CardDescription>
+            <CardDescription>Download audit logs for analysis</CardDescription>
           </CardHeader>
           <CardContent>
             <Button className="w-full" variant="outline">
-              <Download className="h-4 w-4 mr-2" />
+              <Download className="mr-2 h-4 w-4" />
               Export Logs
             </Button>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Filter className="h-5 w-5" />
               Compliance Check
             </CardTitle>
-            <CardDescription>
-              Verify compliance requirements
-            </CardDescription>
+            <CardDescription>Verify compliance requirements</CardDescription>
           </CardHeader>
           <CardContent>
             <Button className="w-full" variant="outline">
-              <Filter className="h-4 w-4 mr-2" />
+              <Filter className="mr-2 h-4 w-4" />
               Check Compliance
             </Button>
           </CardContent>
@@ -159,15 +171,18 @@ export default function AuditPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="border rounded-lg p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <h3 className="font-semibold">Multiple Failed Login Attempts</h3>
+                    <h3 className="font-semibold">
+                      Multiple Failed Login Attempts
+                    </h3>
                     <Badge variant="destructive">High Risk</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    User account &quot;admin@nexg.com&quot; had 5 failed login attempts from IP 192.168.1.100
+                    User account &quot;admin@nexg.com&quot; had 5 failed login
+                    attempts from IP 192.168.1.100
                   </p>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
@@ -186,18 +201,18 @@ export default function AuditPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Shield className="h-4 w-4 mr-1" />
+                    <Shield className="mr-1 h-4 w-4" />
                     Block IP
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
@@ -205,7 +220,8 @@ export default function AuditPage() {
                     <Badge variant="destructive">Medium Risk</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    File &quot;document.exe&quot; uploaded by user &quot;john.doe&quot; - flagged by antivirus
+                    File &quot;document.exe&quot; uploaded by user
+                    &quot;john.doe&quot; - flagged by antivirus
                   </p>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
@@ -213,8 +229,7 @@ export default function AuditPage() {
                       john.doe
                     </span>
                     <span className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      1 hour ago
+                      <Calendar className="h-3 w-3" />1 hour ago
                     </span>
                     <span className="flex items-center gap-1">
                       <Activity className="h-3 w-3" />
@@ -224,26 +239,29 @@ export default function AuditPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Shield className="h-4 w-4 mr-1" />
+                    <Shield className="mr-1 h-4 w-4" />
                     Quarantine
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-start justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <h3 className="font-semibold">Database Access Pattern Change</h3>
+                    <h3 className="font-semibold">
+                      Database Access Pattern Change
+                    </h3>
                     <Badge variant="secondary">Low Risk</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Unusual database query patterns detected from user &quot;analyst.user&quot;
+                    Unusual database query patterns detected from user
+                    &quot;analyst.user&quot;
                   </p>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
@@ -251,8 +269,7 @@ export default function AuditPage() {
                       analyst.user
                     </span>
                     <span className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      3 hours ago
+                      <Calendar className="h-3 w-3" />3 hours ago
                     </span>
                     <span className="flex items-center gap-1">
                       <Activity className="h-3 w-3" />
@@ -262,11 +279,11 @@ export default function AuditPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Shield className="h-4 w-4 mr-1" />
+                    <Shield className="mr-1 h-4 w-4" />
                     Monitor
                   </Button>
                 </div>
@@ -288,34 +305,40 @@ export default function AuditPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="h-5 w-5 text-green-600" />
                   <div>
                     <h4 className="font-medium">Data Encryption</h4>
-                    <p className="text-sm text-muted-foreground">All data encrypted at rest</p>
+                    <p className="text-sm text-muted-foreground">
+                      All data encrypted at rest
+                    </p>
                   </div>
                 </div>
                 <Badge variant="default">Compliant</Badge>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="h-5 w-5 text-green-600" />
                   <div>
                     <h4 className="font-medium">Access Controls</h4>
-                    <p className="text-sm text-muted-foreground">Role-based access implemented</p>
+                    <p className="text-sm text-muted-foreground">
+                      Role-based access implemented
+                    </p>
                   </div>
                 </div>
                 <Badge variant="default">Compliant</Badge>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <Clock className="h-5 w-5 text-yellow-600" />
                   <div>
                     <h4 className="font-medium">Data Retention</h4>
-                    <p className="text-sm text-muted-foreground">Policy review pending</p>
+                    <p className="text-sm text-muted-foreground">
+                      Policy review pending
+                    </p>
                   </div>
                 </div>
                 <Badge variant="secondary">Under Review</Badge>
@@ -334,34 +357,40 @@ export default function AuditPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="h-5 w-5 text-green-600" />
                   <div>
                     <h4 className="font-medium">SSL/TLS</h4>
-                    <p className="text-sm text-muted-foreground">All connections encrypted</p>
+                    <p className="text-sm text-muted-foreground">
+                      All connections encrypted
+                    </p>
                   </div>
                 </div>
                 <Badge variant="default">Secure</Badge>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="h-5 w-5 text-green-600" />
                   <div>
                     <h4 className="font-medium">Firewall</h4>
-                    <p className="text-sm text-muted-foreground">Network protection active</p>
+                    <p className="text-sm text-muted-foreground">
+                      Network protection active
+                    </p>
                   </div>
                 </div>
                 <Badge variant="default">Active</Badge>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <AlertTriangle className="h-5 w-5 text-yellow-600" />
                   <div>
                     <h4 className="font-medium">Vulnerability Scan</h4>
-                    <p className="text-sm text-muted-foreground">Last scan: 5 days ago</p>
+                    <p className="text-sm text-muted-foreground">
+                      Last scan: 5 days ago
+                    </p>
                   </div>
                 </div>
                 <Badge variant="secondary">Due Soon</Badge>
@@ -406,9 +435,9 @@ export default function AuditPage() {
                 </SelectContent>
               </Select>
             </div>
-            
-            <div className="border rounded-lg">
-              <div className="p-4 border-b bg-muted/50">
+
+            <div className="rounded-lg border">
+              <div className="border-b bg-muted/50 p-4">
                 <div className="grid grid-cols-5 gap-4 text-sm font-medium">
                   <span>Timestamp</span>
                   <span>User</span>
@@ -417,33 +446,33 @@ export default function AuditPage() {
                   <span>Status</span>
                 </div>
               </div>
-              
+
               <div className="divide-y">
-                <div className="p-4 grid grid-cols-5 gap-4 text-sm">
+                <div className="grid grid-cols-5 gap-4 p-4 text-sm">
                   <span>2024-01-15 14:30:22</span>
                   <span>admin@nexg.com</span>
                   <span>User Login</span>
                   <span>System</span>
                   <Badge variant="default">Success</Badge>
                 </div>
-                
-                <div className="p-4 grid grid-cols-5 gap-4 text-sm">
+
+                <div className="grid grid-cols-5 gap-4 p-4 text-sm">
                   <span>2024-01-15 14:25:15</span>
                   <span>john.doe</span>
                   <span>Data Export</span>
                   <span>Reports</span>
                   <Badge variant="default">Success</Badge>
                 </div>
-                
-                <div className="p-4 grid grid-cols-5 gap-4 text-sm">
+
+                <div className="grid grid-cols-5 gap-4 p-4 text-sm">
                   <span>2024-01-15 14:20:08</span>
                   <span>sarah.johnson</span>
                   <span>User Update</span>
                   <span>User Management</span>
                   <Badge variant="default">Success</Badge>
                 </div>
-                
-                <div className="p-4 grid grid-cols-5 gap-4 text-sm">
+
+                <div className="grid grid-cols-5 gap-4 p-4 text-sm">
                   <span>2024-01-15 14:15:42</span>
                   <span>analyst.user</span>
                   <span>Database Query</span>
@@ -452,14 +481,18 @@ export default function AuditPage() {
                 </div>
               </div>
             </div>
-            
-            <div className="flex justify-between items-center">
+
+            <div className="flex items-center justify-between">
               <p className="text-sm text-muted-foreground">
                 Showing 1-20 of 2,847 events
               </p>
               <div className="flex gap-2">
-                <Button variant="outline" size="sm">Previous</Button>
-                <Button variant="outline" size="sm">Next</Button>
+                <Button variant="outline" size="sm">
+                  Previous
+                </Button>
+                <Button variant="outline" size="sm">
+                  Next
+                </Button>
               </div>
             </div>
           </div>

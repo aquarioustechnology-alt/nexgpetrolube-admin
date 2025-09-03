@@ -1,26 +1,38 @@
-"use client"
+'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { 
-  Search, 
-  Shield, 
-  Users, 
-  Plus, 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import {
+  Search,
+  Shield,
+  Users,
+  Plus,
   Edit,
   Trash2,
   Eye,
   Settings,
-  UserCheck
+  UserCheck,
 } from 'lucide-react'
-import { KpiRow } from "@/components/kpi/kpi-row"
-import { KpiCard } from "@/components/kpi/kpi-card"
-import { KPI } from "@/lib/page-kpis"
-import { usersMock } from "@/lib/mock/users"
-import { rolesMock } from "@/lib/mock/roles"
+import { KpiRow } from '@/components/kpi/kpi-row'
+import { KpiCard } from '@/components/kpi/kpi-card'
+import { KPI } from '@/lib/page-kpis'
+import { usersMock } from '@/lib/mock/users'
+import { rolesMock } from '@/lib/mock/roles'
 
 export default function RolesPage() {
   // Use the KPI mapping
@@ -38,12 +50,12 @@ export default function RolesPage() {
       {/* KPI Row */}
       <KpiRow>
         {kpis.map((k, i) => (
-          <KpiCard 
-            key={i} 
-            label={k.label} 
-            value={k.value} 
-            icon={k.icon} 
-            hint={k.hint} 
+          <KpiCard
+            key={i}
+            label={k.label}
+            value={k.value}
+            icon={k.icon}
+            hint={k.hint}
           />
         ))}
       </KpiRow>
@@ -59,7 +71,7 @@ export default function RolesPage() {
             <div className="text-2xl font-bold">8</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Users</CardTitle>
@@ -69,7 +81,7 @@ export default function RolesPage() {
             <div className="text-2xl font-bold">156</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Custom Roles</CardTitle>
@@ -79,7 +91,7 @@ export default function RolesPage() {
             <div className="text-2xl font-bold">3</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Permissions</CardTitle>
@@ -105,12 +117,12 @@ export default function RolesPage() {
           </CardHeader>
           <CardContent>
             <Button className="w-full">
-              <Plus className="h-4 w-4 mr-2" />
+              <Plus className="mr-2 h-4 w-4" />
               Create Role
             </Button>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -123,7 +135,7 @@ export default function RolesPage() {
           </CardHeader>
           <CardContent>
             <Button className="w-full" variant="outline">
-              <Shield className="h-4 w-4 mr-2" />
+              <Shield className="mr-2 h-4 w-4" />
               Manage Permissions
             </Button>
           </CardContent>
@@ -140,7 +152,7 @@ export default function RolesPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="border rounded-lg p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
@@ -150,7 +162,7 @@ export default function RolesPage() {
                   <p className="text-sm text-muted-foreground">
                     Full system access with all permissions
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="outline">Users: 2</Badge>
                     <Badge variant="outline">Permissions: All</Badge>
                     <Badge variant="outline">Cannot Delete</Badge>
@@ -158,18 +170,18 @@ export default function RolesPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
@@ -179,7 +191,7 @@ export default function RolesPage() {
                   <p className="text-sm text-muted-foreground">
                     Administrative access with most permissions
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="outline">Users: 8</Badge>
                     <Badge variant="outline">Permissions: 22/24</Badge>
                     <Badge variant="outline">Cannot Delete</Badge>
@@ -187,18 +199,18 @@ export default function RolesPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
@@ -208,7 +220,7 @@ export default function RolesPage() {
                   <p className="text-sm text-muted-foreground">
                     Content moderation and user management
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="outline">Users: 24</Badge>
                     <Badge variant="outline">Permissions: 18/24</Badge>
                     <Badge variant="outline">Can Edit</Badge>
@@ -216,22 +228,22 @@ export default function RolesPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Trash2 className="h-4 w-4 mr-1" />
+                    <Trash2 className="mr-1 h-4 w-4" />
                     Delete
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
@@ -241,7 +253,7 @@ export default function RolesPage() {
                   <p className="text-sm text-muted-foreground">
                     Data analysis and reporting access
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="outline">Users: 15</Badge>
                     <Badge variant="outline">Permissions: 12/24</Badge>
                     <Badge variant="outline">Can Edit</Badge>
@@ -249,15 +261,15 @@ export default function RolesPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Trash2 className="h-4 w-4 mr-1" />
+                    <Trash2 className="mr-1 h-4 w-4" />
                     Delete
                   </Button>
                 </div>
@@ -277,7 +289,7 @@ export default function RolesPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="border rounded-lg p-4">
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
@@ -287,7 +299,7 @@ export default function RolesPage() {
                   <p className="text-sm text-muted-foreground">
                     Financial operations and payment management
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="outline">Users: 6</Badge>
                     <Badge variant="outline">Permissions: 16/24</Badge>
                     <Badge variant="outline">Created: 2 weeks ago</Badge>
@@ -295,22 +307,22 @@ export default function RolesPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Trash2 className="h-4 w-4 mr-1" />
+                    <Trash2 className="mr-1 h-4 w-4" />
                     Delete
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
@@ -320,7 +332,7 @@ export default function RolesPage() {
                   <p className="text-sm text-muted-foreground">
                     Customer support and issue resolution
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="outline">Users: 12</Badge>
                     <Badge variant="outline">Permissions: 10/24</Badge>
                     <Badge variant="outline">Created: 1 month ago</Badge>
@@ -328,22 +340,22 @@ export default function RolesPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Trash2 className="h-4 w-4 mr-1" />
+                    <Trash2 className="mr-1 h-4 w-4" />
                     Delete
                   </Button>
                 </div>
               </div>
             </div>
-            
-            <div className="border rounded-lg p-4">
+
+            <div className="rounded-lg border p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
@@ -353,7 +365,7 @@ export default function RolesPage() {
                   <p className="text-sm text-muted-foreground">
                     Content management and publishing
                   </p>
-                  <div className="flex gap-2 mt-2">
+                  <div className="mt-2 flex gap-2">
                     <Badge variant="outline">Users: 8</Badge>
                     <Badge variant="outline">Permissions: 8/24</Badge>
                     <Badge variant="outline">Created: 3 weeks ago</Badge>
@@ -361,15 +373,15 @@ export default function RolesPage() {
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View Details
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Edit className="h-4 w-4 mr-1" />
+                    <Edit className="mr-1 h-4 w-4" />
                     Edit
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Trash2 className="h-4 w-4 mr-1" />
+                    <Trash2 className="mr-1 h-4 w-4" />
                     Delete
                   </Button>
                 </div>
@@ -392,97 +404,97 @@ export default function RolesPage() {
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left p-3 font-medium">Permission</th>
-                  <th className="text-center p-3 font-medium">Super Admin</th>
-                  <th className="text-center p-3 font-medium">Admin</th>
-                  <th className="text-center p-3 font-medium">Moderator</th>
-                  <th className="text-center p-3 font-medium">Analyst</th>
-                  <th className="text-center p-3 font-medium">Finance</th>
-                  <th className="text-center p-3 font-medium">Support</th>
+                  <th className="p-3 text-left font-medium">Permission</th>
+                  <th className="p-3 text-center font-medium">Super Admin</th>
+                  <th className="p-3 text-center font-medium">Admin</th>
+                  <th className="p-3 text-center font-medium">Moderator</th>
+                  <th className="p-3 text-center font-medium">Analyst</th>
+                  <th className="p-3 text-center font-medium">Finance</th>
+                  <th className="p-3 text-center font-medium">Support</th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 <tr>
                   <td className="p-3">User Management</td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="secondary">Limited</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="outline">View</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="outline">View</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="outline">View</Badge>
                   </td>
                 </tr>
                 <tr>
                   <td className="p-3">Content Moderation</td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="outline">View</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="outline">View</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="secondary">Limited</Badge>
                   </td>
                 </tr>
                 <tr>
                   <td className="p-3">Financial Operations</td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="outline">View</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="outline">View</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="outline">View</Badge>
                   </td>
                 </tr>
                 <tr>
                   <td className="p-3">Reports & Analytics</td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="secondary">Limited</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="default">Full</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="secondary">Limited</Badge>
                   </td>
-                  <td className="text-center p-3">
+                  <td className="p-3 text-center">
                     <Badge variant="outline">View</Badge>
                   </td>
                 </tr>

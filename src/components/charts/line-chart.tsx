@@ -1,6 +1,13 @@
-"use client"
+'use client'
 
-import { Line, LineChart as RechartsLineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import {
+  Line,
+  LineChart as RechartsLineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 
 interface LineChartProps {
   data: any[]
@@ -10,12 +17,18 @@ interface LineChartProps {
   height?: number
 }
 
-export function LineChart({ data, dataKey, xAxisKey, color = "hsl(var(--primary))", height = 300 }: LineChartProps) {
+export function LineChart({
+  data,
+  dataKey,
+  xAxisKey,
+  color = 'hsl(var(--primary))',
+  height = 300,
+}: LineChartProps) {
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsLineChart data={data}>
-        <XAxis 
-          dataKey={xAxisKey} 
+        <XAxis
+          dataKey={xAxisKey}
           stroke="#888888"
           fontSize={12}
           tickLine={false}
@@ -26,9 +39,9 @@ export function LineChart({ data, dataKey, xAxisKey, color = "hsl(var(--primary)
           fontSize={12}
           tickLine={false}
           axisLine={false}
-          tickFormatter={(value) => `${value}`}
+          tickFormatter={value => `${value}`}
         />
-        <Tooltip 
+        <Tooltip
           contentStyle={{
             backgroundColor: 'hsl(var(--popover))',
             border: '1px solid hsl(var(--border))',

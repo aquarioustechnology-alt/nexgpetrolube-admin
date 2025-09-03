@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   // TODO: Implement proper authentication
   // For now, just redirect to root if accessing admin without auth
   // In production, this should check for valid JWT tokens or session
-  
+
   if (request.nextUrl.pathname.startsWith('/admin')) {
     // Placeholder for auth check
     // const token = request.cookies.get('auth-token')

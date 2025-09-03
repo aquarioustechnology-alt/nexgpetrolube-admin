@@ -1,6 +1,12 @@
-"use client"
+'use client'
 
-import { Pie, PieChart as RechartsPieChart, ResponsiveContainer, Tooltip, Cell } from 'recharts'
+import {
+  Pie,
+  PieChart as RechartsPieChart,
+  ResponsiveContainer,
+  Tooltip,
+  Cell,
+} from 'recharts'
 
 interface PieChartProps {
   data: any[]
@@ -17,7 +23,12 @@ const COLORS = [
   'hsl(var(--chart-5))',
 ]
 
-export function PieChart({ data, dataKey, nameKey, height = 300 }: PieChartProps) {
+export function PieChart({
+  data,
+  dataKey,
+  nameKey,
+  height = 300,
+}: PieChartProps) {
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsPieChart>
@@ -31,10 +42,13 @@ export function PieChart({ data, dataKey, nameKey, height = 300 }: PieChartProps
           dataKey={dataKey}
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.fill || COLORS[index % COLORS.length]} />
+            <Cell
+              key={`cell-${index}`}
+              fill={entry.fill || COLORS[index % COLORS.length]}
+            />
           ))}
         </Pie>
-        <Tooltip 
+        <Tooltip
           contentStyle={{
             backgroundColor: 'hsl(var(--popover))',
             border: '1px solid hsl(var(--border))',

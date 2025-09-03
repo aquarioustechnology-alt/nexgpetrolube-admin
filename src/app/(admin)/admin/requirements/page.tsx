@@ -1,22 +1,29 @@
-"use client"
+'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { DataTable } from "@/components/tables/data-table"
-import { requirementsColumns } from "@/components/tables/columns/requirements-columns"
-import { requirementsMock } from "@/lib/mock/requirements"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { 
-  ListChecks, 
-  Repeat2, 
-  ShieldAlert, 
-  Package 
-} from "lucide-react"
-import { KpiRow } from "@/components/kpi/kpi-row"
-import { KpiCard } from "@/components/kpi/kpi-card"
-import SectionHeading from "@/components/section-heading"
-import { KPI } from "@/lib/page-kpis"
+import { DataTable } from '@/components/tables/data-table'
+import { requirementsColumns } from '@/components/tables/columns/requirements-columns'
+import { requirementsMock } from '@/lib/mock/requirements'
+import { Button } from '@/components/ui/button'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { ListChecks, Repeat2, ShieldAlert, Package } from 'lucide-react'
+import { KpiRow } from '@/components/kpi/kpi-row'
+import { KpiCard } from '@/components/kpi/kpi-card'
+import SectionHeading from '@/components/section-heading'
+import { KPI } from '@/lib/page-kpis'
 
 export default function RequirementsPage() {
   const kpis = KPI.requirements(requirementsMock)
@@ -32,12 +39,12 @@ export default function RequirementsPage() {
 
       <KpiRow>
         {kpis.map((k, i) => (
-          <KpiCard 
-            key={i} 
-            label={k.label} 
-            value={k.value} 
-            icon={k.icon} 
-            hint={k.hint} 
+          <KpiCard
+            key={i}
+            label={k.label}
+            value={k.value}
+            icon={k.icon}
+            hint={k.hint}
           />
         ))}
       </KpiRow>
@@ -52,7 +59,7 @@ export default function RequirementsPage() {
         toolbarExtras={
           <div className="flex gap-2">
             <Select defaultValue="all">
-              <SelectTrigger className="w-[140px] h-9">
+              <SelectTrigger className="h-9 w-[140px]">
                 <SelectValue placeholder="Filter urgency" />
               </SelectTrigger>
               <SelectContent>
@@ -64,7 +71,7 @@ export default function RequirementsPage() {
               </SelectContent>
             </Select>
             <Select defaultValue="all">
-              <SelectTrigger className="w-[140px] h-9">
+              <SelectTrigger className="h-9 w-[140px]">
                 <SelectValue placeholder="Filter status" />
               </SelectTrigger>
               <SelectContent>
@@ -74,7 +81,9 @@ export default function RequirementsPage() {
                 <SelectItem value="closed">Closed</SelectItem>
               </SelectContent>
             </Select>
-            <Button variant="outline" size="sm">Export</Button>
+            <Button variant="outline" size="sm">
+              Export
+            </Button>
           </div>
         }
       />

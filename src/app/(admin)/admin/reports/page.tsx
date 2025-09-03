@@ -1,25 +1,37 @@
-"use client"
+'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { 
-  Search, 
-  BarChart3, 
-  TrendingUp, 
-  Download, 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import {
+  Search,
+  BarChart3,
+  TrendingUp,
+  Download,
   Calendar,
   Filter,
   Eye,
   FileText,
   PieChart,
-  LineChart
+  LineChart,
 } from 'lucide-react'
-import { KpiRow } from "@/components/kpi/kpi-row"
-import { KpiCard } from "@/components/kpi/kpi-card"
-import { KPI } from "@/lib/page-kpis"
+import { KpiRow } from '@/components/kpi/kpi-row'
+import { KpiCard } from '@/components/kpi/kpi-card'
+import { KPI } from '@/lib/page-kpis'
 
 export default function ReportsPage() {
   // Use the KPI mapping with empty array as placeholder
@@ -28,7 +40,9 @@ export default function ReportsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Reports & Analytics</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          Reports & Analytics
+        </h1>
         <p className="text-muted-foreground">
           Generate and view comprehensive business reports and analytics.
         </p>
@@ -37,12 +51,12 @@ export default function ReportsPage() {
       {/* KPI Row */}
       <KpiRow>
         {kpis.map((k, i) => (
-          <KpiCard 
-            key={i} 
-            label={k.label} 
-            value={k.value} 
-            icon={k.icon} 
-            hint={k.hint} 
+          <KpiCard
+            key={i}
+            label={k.label}
+            value={k.value}
+            icon={k.icon}
+            hint={k.hint}
           />
         ))}
       </KpiRow>
@@ -73,14 +87,14 @@ export default function ReportsPage() {
                 <span>Growth</span>
                 <span className="text-green-600">+14.3%</span>
               </div>
-              <Button className="w-full mt-3">
-                <Download className="h-4 w-4 mr-2" />
+              <Button className="mt-3 w-full">
+                <Download className="mr-2 h-4 w-4" />
                 Download Report
               </Button>
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -105,14 +119,14 @@ export default function ReportsPage() {
                 <span>Customer Retention</span>
                 <span className="text-green-600">87%</span>
               </div>
-              <Button className="w-full mt-3" variant="outline">
-                <Eye className="h-4 w-4 mr-2" />
+              <Button className="mt-3 w-full" variant="outline">
+                <Eye className="mr-2 h-4 w-4" />
                 View Details
               </Button>
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -137,8 +151,8 @@ export default function ReportsPage() {
                 <span>Specialty</span>
                 <span className="text-muted-foreground">30%</span>
               </div>
-              <Button className="w-full mt-3" variant="outline">
-                <Eye className="h-4 w-4 mr-2" />
+              <Button className="mt-3 w-full" variant="outline">
+                <Eye className="mr-2 h-4 w-4" />
                 View Details
               </Button>
             </div>
@@ -158,61 +172,67 @@ export default function ReportsPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <FileText className="h-5 w-5 text-muted-foreground" />
                   <div>
                     <h4 className="font-medium">Monthly Revenue Report</h4>
-                    <p className="text-sm text-muted-foreground">Comprehensive revenue analysis</p>
+                    <p className="text-sm text-muted-foreground">
+                      Comprehensive revenue analysis
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Download className="h-4 w-4 mr-1" />
+                    <Download className="mr-1 h-4 w-4" />
                     Export
                   </Button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <FileText className="h-5 w-5 text-muted-foreground" />
                   <div>
                     <h4 className="font-medium">Commission Analysis</h4>
-                    <p className="text-sm text-muted-foreground">Commission tracking and analysis</p>
+                    <p className="text-sm text-muted-foreground">
+                      Commission tracking and analysis
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Download className="h-4 w-4 mr-1" />
+                    <Download className="mr-1 h-4 w-4" />
                     Export
                   </Button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <FileText className="h-5 w-5 text-muted-foreground" />
                   <div>
                     <h4 className="font-medium">Payment Reconciliation</h4>
-                    <p className="text-sm text-muted-foreground">Payment tracking and reconciliation</p>
+                    <p className="text-sm text-muted-foreground">
+                      Payment tracking and reconciliation
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Download className="h-4 w-4 mr-1" />
+                    <Download className="mr-1 h-4 w-4" />
                     Export
                   </Button>
                 </div>
@@ -231,61 +251,67 @@ export default function ReportsPage() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <BarChart3 className="h-5 w-5 text-muted-foreground" />
                   <div>
                     <h4 className="font-medium">Auction Performance</h4>
-                    <p className="text-sm text-muted-foreground">Auction success rates and metrics</p>
+                    <p className="text-sm text-muted-foreground">
+                      Auction success rates and metrics
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Download className="h-4 w-4 mr-1" />
+                    <Download className="mr-1 h-4 w-4" />
                     Export
                   </Button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <BarChart3 className="h-5 w-5 text-muted-foreground" />
                   <div>
                     <h4 className="font-medium">User Activity Report</h4>
-                    <p className="text-sm text-muted-foreground">User engagement and activity metrics</p>
+                    <p className="text-sm text-muted-foreground">
+                      User engagement and activity metrics
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Download className="h-4 w-4 mr-1" />
+                    <Download className="mr-1 h-4 w-4" />
                     Export
                   </Button>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between p-3 border rounded-lg">
+
+              <div className="flex items-center justify-between rounded-lg border p-3">
                 <div className="flex items-center gap-3">
                   <BarChart3 className="h-5 w-5 text-muted-foreground" />
                   <div>
                     <h4 className="font-medium">Moderation Report</h4>
-                    <p className="text-sm text-muted-foreground">Content moderation and compliance</p>
+                    <p className="text-sm text-muted-foreground">
+                      Content moderation and compliance
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="outline">
-                    <Eye className="h-4 w-4 mr-1" />
+                    <Eye className="mr-1 h-4 w-4" />
                     View
                   </Button>
                   <Button size="sm" variant="outline">
-                    <Download className="h-4 w-4 mr-1" />
+                    <Download className="mr-1 h-4 w-4" />
                     Export
                   </Button>
                 </div>
@@ -314,12 +340,16 @@ export default function ReportsPage() {
                 <SelectContent>
                   <SelectItem value="sales">Sales Report</SelectItem>
                   <SelectItem value="revenue">Revenue Report</SelectItem>
-                  <SelectItem value="performance">Performance Report</SelectItem>
-                  <SelectItem value="operational">Operational Report</SelectItem>
+                  <SelectItem value="performance">
+                    Performance Report
+                  </SelectItem>
+                  <SelectItem value="operational">
+                    Operational Report
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div className="space-y-2">
               <label className="text-sm font-medium">Date Range</label>
               <Select>
@@ -336,7 +366,7 @@ export default function ReportsPage() {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div className="space-y-2">
               <label className="text-sm font-medium">Export Format</label>
               <Select>
@@ -352,14 +382,14 @@ export default function ReportsPage() {
               </Select>
             </div>
           </div>
-          
-          <div className="flex gap-3 mt-6">
+
+          <div className="mt-6 flex gap-3">
             <Button>
-              <BarChart3 className="h-4 w-4 mr-2" />
+              <BarChart3 className="mr-2 h-4 w-4" />
               Generate Report
             </Button>
             <Button variant="outline">
-              <Filter className="h-4 w-4 mr-2" />
+              <Filter className="mr-2 h-4 w-4" />
               Add Filters
             </Button>
           </div>

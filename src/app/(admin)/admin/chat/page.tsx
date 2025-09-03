@@ -1,32 +1,62 @@
-"use client"
+'use client'
 
 import { useState } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 import { Separator } from '@/components/ui/separator'
-import { 
-  Search, 
-  Eye, 
-  Trash2, 
-  UserX, 
-  Volume2, 
+import {
+  Search,
+  Eye,
+  Trash2,
+  UserX,
+  Volume2,
   VolumeX,
   Flag,
   MessageCircle,
   AlertTriangle,
   Shield,
-  Filter
+  Filter,
 } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
-import { KpiRow } from "@/components/kpi/kpi-row"
-import { KpiCard } from "@/components/kpi/kpi-card"
-import { KPI } from "@/lib/page-kpis"
-import { moderationMock } from "@/lib/mock/moderation"
+import { KpiRow } from '@/components/kpi/kpi-row'
+import { KpiCard } from '@/components/kpi/kpi-card'
+import { KPI } from '@/lib/page-kpis'
+import { moderationMock } from '@/lib/mock/moderation'
 
 const getSeverityBadge = (severity: string) => {
   switch (severity) {
@@ -69,14 +99,14 @@ const getRoomTypeBadge = (type: string) => {
   }
 }
 
-function ChatDetailSheet({ 
-  chat, 
-  onDelete, 
-  onMute, 
-  onKick, 
-  onEscalate, 
-  onResolve 
-}: { 
+function ChatDetailSheet({
+  chat,
+  onDelete,
+  onMute,
+  onKick,
+  onEscalate,
+  onResolve,
+}: {
   chat: any
   onDelete: (id: string) => void
   onMute: (id: string, duration: string) => void
@@ -85,30 +115,34 @@ function ChatDetailSheet({
   onResolve: (id: string) => void
 }) {
   return (
-    <SheetContent className="w-[600px] sm:w-[700px] overflow-y-auto">
+    <SheetContent className="w-[600px] overflow-y-auto sm:w-[700px]">
       <SheetHeader>
         <SheetTitle>Chat Moderation - {chat.id}</SheetTitle>
         <SheetDescription>
           Review and take action on flagged message
         </SheetDescription>
       </SheetHeader>
-      
-      <div className="space-y-6 mt-6">
+
+      <div className="mt-6 space-y-6">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <h4 className="font-semibold text-sm text-muted-foreground mb-2">MESSAGE DETAILS</h4>
+            <h4 className="mb-2 text-sm font-semibold text-muted-foreground">
+              MESSAGE DETAILS
+            </h4>
             <div className="space-y-2">
-              <div className="p-3 bg-muted rounded-md">
-                <p className="text-sm font-mono">{chat.message}</p>
+              <div className="rounded-md bg-muted p-3">
+                <p className="font-mono text-sm">{chat.message}</p>
               </div>
               <div className="text-sm text-muted-foreground">
                 Sent at: {new Date(chat.timestamp).toLocaleString()}
               </div>
             </div>
           </div>
-          
+
           <div>
-            <h4 className="font-semibold text-sm text-muted-foreground mb-2">FLAG INFORMATION</h4>
+            <h4 className="mb-2 text-sm font-semibold text-muted-foreground">
+              FLAG INFORMATION
+            </h4>
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Flag className="h-4 w-4 text-orange-500" />
@@ -121,12 +155,14 @@ function ChatDetailSheet({
             </div>
           </div>
         </div>
-        
+
         <Separator />
-        
+
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <h4 className="font-semibold text-sm text-muted-foreground mb-2">USER INFORMATION</h4>
+            <h4 className="mb-2 text-sm font-semibold text-muted-foreground">
+              USER INFORMATION
+            </h4>
             <div className="space-y-2">
               <div className="text-sm">
                 <strong>Name:</strong> {chat.userName}
@@ -136,9 +172,11 @@ function ChatDetailSheet({
               </div>
             </div>
           </div>
-          
+
           <div>
-            <h4 className="font-semibold text-sm text-muted-foreground mb-2">ROOM CONTEXT</h4>
+            <h4 className="mb-2 text-sm font-semibold text-muted-foreground">
+              ROOM CONTEXT
+            </h4>
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <MessageCircle className="h-4 w-4 text-muted-foreground" />
@@ -148,18 +186,20 @@ function ChatDetailSheet({
             </div>
           </div>
         </div>
-        
+
         <Separator />
-        
+
         <div>
-          <h4 className="font-semibold text-sm text-muted-foreground mb-3">CONTEXT & HISTORY</h4>
-          <div className="p-3 bg-muted rounded-md text-sm">
-            {chat.context}
-          </div>
-          
+          <h4 className="mb-3 text-sm font-semibold text-muted-foreground">
+            CONTEXT & HISTORY
+          </h4>
+          <div className="rounded-md bg-muted p-3 text-sm">{chat.context}</div>
+
           {chat.actions.length > 0 && (
             <div className="mt-3">
-              <label className="text-sm font-medium text-muted-foreground">Previous Actions:</label>
+              <label className="text-sm font-medium text-muted-foreground">
+                Previous Actions:
+              </label>
               <div className="mt-1 space-y-1">
                 {chat.actions.map((action: string, index: number) => (
                   <Badge key={index} variant="outline" className="mr-2">
@@ -170,7 +210,7 @@ function ChatDetailSheet({
             </div>
           )}
         </div>
-        
+
         {chat.status === 'pending' && (
           <>
             <Separator />
@@ -178,7 +218,7 @@ function ChatDetailSheet({
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button variant="destructive" className="w-full">
-                    <Trash2 className="h-4 w-4 mr-2" />
+                    <Trash2 className="mr-2 h-4 w-4" />
                     Delete Message
                   </Button>
                 </AlertDialogTrigger>
@@ -186,20 +226,23 @@ function ChatDetailSheet({
                   <AlertDialogHeader>
                     <AlertDialogTitle>Delete Message</AlertDialogTitle>
                     <AlertDialogDescription>
-                      This will permanently delete the flagged message. This action cannot be undone.
+                      This will permanently delete the flagged message. This
+                      action cannot be undone.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => onDelete(chat.id)}>Delete</AlertDialogAction>
+                    <AlertDialogAction onClick={() => onDelete(chat.id)}>
+                      Delete
+                    </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
-              
+
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button variant="outline" className="w-full">
-                    <VolumeX className="h-4 w-4 mr-2" />
+                    <VolumeX className="mr-2 h-4 w-4" />
                     Mute User
                   </Button>
                 </AlertDialogTrigger>
@@ -212,16 +255,24 @@ function ChatDetailSheet({
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => onMute(chat.id, "1 hour")}>1 Hour</AlertDialogAction>
-                    <AlertDialogAction onClick={() => onMute(chat.id, "24 hours")}>24 Hours</AlertDialogAction>
+                    <AlertDialogAction
+                      onClick={() => onMute(chat.id, '1 hour')}
+                    >
+                      1 Hour
+                    </AlertDialogAction>
+                    <AlertDialogAction
+                      onClick={() => onMute(chat.id, '24 hours')}
+                    >
+                      24 Hours
+                    </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
-              
+
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button variant="outline" className="w-full">
-                    <UserX className="h-4 w-4 mr-2" />
+                    <UserX className="mr-2 h-4 w-4" />
                     Kick User
                   </Button>
                 </AlertDialogTrigger>
@@ -229,30 +280,33 @@ function ChatDetailSheet({
                   <AlertDialogHeader>
                     <AlertDialogTitle>Kick User</AlertDialogTitle>
                     <AlertDialogDescription>
-                      This will remove the user from the current room. They can rejoin if invited.
+                      This will remove the user from the current room. They can
+                      rejoin if invited.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => onKick(chat.id)}>Kick</AlertDialogAction>
+                    <AlertDialogAction onClick={() => onKick(chat.id)}>
+                      Kick
+                    </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
-              
-              <Button 
-                variant="outline" 
+
+              <Button
+                variant="outline"
                 onClick={() => onEscalate(chat.id)}
                 className="w-full"
               >
-                <AlertTriangle className="h-4 w-4 mr-2" />
+                <AlertTriangle className="mr-2 h-4 w-4" />
                 Escalate
               </Button>
-              
-              <Button 
+
+              <Button
                 onClick={() => onResolve(chat.id)}
-                className="w-full col-span-2"
+                className="col-span-2 w-full"
               >
-                <Shield className="h-4 w-4 mr-2" />
+                <Shield className="mr-2 h-4 w-4" />
                 Mark as Resolved
               </Button>
             </div>
@@ -266,51 +320,53 @@ function ChatDetailSheet({
 export default function ChatModerationPage() {
   const { toast } = useToast()
   const [selectedChat, setSelectedChat] = useState<any>(null)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [severityFilter, setSeverityFilter] = useState("all")
-  
+  const [searchTerm, setSearchTerm] = useState('')
+  const [severityFilter, setSeverityFilter] = useState('all')
+
   const filteredChats = moderationMock.filter(chat => {
-    const matchesSearch = chat.message.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         chat.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         chat.room.toLowerCase().includes(searchTerm.toLowerCase())
-    
-    const matchesSeverity = severityFilter === "all" || chat.severity === severityFilter
-    
+    const matchesSearch =
+      chat.message.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      chat.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      chat.room.toLowerCase().includes(searchTerm.toLowerCase())
+
+    const matchesSeverity =
+      severityFilter === 'all' || chat.severity === severityFilter
+
     return matchesSearch && matchesSeverity
   })
 
   const handleDelete = (id: string) => {
     toast({
-      title: "Message Deleted",
-      description: `Message ${id} has been deleted and user has been notified.`
+      title: 'Message Deleted',
+      description: `Message ${id} has been deleted and user has been notified.`,
     })
   }
 
   const handleMute = (id: string, duration: string) => {
     toast({
-      title: "User Muted",
-      description: `User has been muted for ${duration}.`
+      title: 'User Muted',
+      description: `User has been muted for ${duration}.`,
     })
   }
 
   const handleKick = (id: string) => {
     toast({
-      title: "User Kicked",
-      description: `User has been removed from the room.`
+      title: 'User Kicked',
+      description: `User has been removed from the room.`,
     })
   }
 
   const handleEscalate = (id: string) => {
     toast({
-      title: "Case Escalated",
-      description: `Case ${id} has been escalated to senior moderators.`
+      title: 'Case Escalated',
+      description: `Case ${id} has been escalated to senior moderators.`,
     })
   }
 
   const handleResolve = (id: string) => {
     toast({
-      title: "Case Resolved",
-      description: `Case ${id} has been marked as resolved.`
+      title: 'Case Resolved',
+      description: `Case ${id} has been marked as resolved.`,
     })
   }
 
@@ -330,19 +386,20 @@ export default function ChatModerationPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Chat Moderation</h1>
         <p className="text-muted-foreground">
-          Monitor and moderate chat messages across auctions, listings, and discussions
+          Monitor and moderate chat messages across auctions, listings, and
+          discussions
         </p>
       </div>
 
       {/* KPI Row */}
       <KpiRow>
         {kpis.map((k, i) => (
-          <KpiCard 
-            key={i} 
-            label={k.label} 
-            value={k.value} 
-            icon={k.icon} 
-            hint={k.hint} 
+          <KpiCard
+            key={i}
+            label={k.label}
+            value={k.value}
+            icon={k.icon}
+            hint={k.hint}
           />
         ))}
       </KpiRow>
@@ -362,12 +419,12 @@ export default function ChatModerationPage() {
                 <Input
                   placeholder="Search messages..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-8 w-64"
+                  onChange={e => setSearchTerm(e.target.value)}
+                  className="w-64 pl-8"
                 />
               </div>
               <Button variant="outline">
-                <Filter className="h-4 w-4 mr-2" />
+                <Filter className="mr-2 h-4 w-4" />
                 Filters
               </Button>
             </div>
@@ -388,23 +445,27 @@ export default function ChatModerationPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredChats.map((chat) => (
+              {filteredChats.map(chat => (
                 <TableRow key={chat.id}>
                   <TableCell className="max-w-xs">
-                    <div className="truncate font-mono text-sm bg-muted p-2 rounded">
+                    <div className="truncate rounded bg-muted p-2 font-mono text-sm">
                       {chat.message}
                     </div>
                   </TableCell>
                   <TableCell>
                     <div>
                       <div className="font-medium">{chat.userName}</div>
-                      <div className="text-sm text-muted-foreground">{chat.user}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {chat.user}
+                      </div>
                     </div>
                   </TableCell>
                   <TableCell>
                     <div>
                       <div className="font-medium">{chat.room}</div>
-                      <div className="mt-1">{getRoomTypeBadge(chat.roomType)}</div>
+                      <div className="mt-1">
+                        {getRoomTypeBadge(chat.roomType)}
+                      </div>
                     </div>
                   </TableCell>
                   <TableCell>
@@ -421,13 +482,17 @@ export default function ChatModerationPage() {
                     <div className="flex gap-2">
                       <Sheet>
                         <SheetTrigger asChild>
-                          <Button size="sm" variant="outline" onClick={() => setSelectedChat(chat)}>
-                            <Eye className="h-3 w-3 mr-1" />
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => setSelectedChat(chat)}
+                          >
+                            <Eye className="mr-1 h-3 w-3" />
                             Review
                           </Button>
                         </SheetTrigger>
                         {selectedChat && (
-                          <ChatDetailSheet 
+                          <ChatDetailSheet
                             chat={selectedChat}
                             onDelete={handleDelete}
                             onMute={handleMute}
@@ -437,13 +502,18 @@ export default function ChatModerationPage() {
                           />
                         )}
                       </Sheet>
-                      
-                      {chat.status === 'pending' && chat.severity === 'high' && (
-                        <Button size="sm" variant="destructive" onClick={() => handleDelete(chat.id)}>
-                          <Trash2 className="h-3 w-3 mr-1" />
-                          Delete
-                        </Button>
-                      )}
+
+                      {chat.status === 'pending' &&
+                        chat.severity === 'high' && (
+                          <Button
+                            size="sm"
+                            variant="destructive"
+                            onClick={() => handleDelete(chat.id)}
+                          >
+                            <Trash2 className="mr-1 h-3 w-3" />
+                            Delete
+                          </Button>
+                        )}
                     </div>
                   </TableCell>
                 </TableRow>

@@ -1,7 +1,9 @@
 # Admin Panel Scope Document
+
 ## Indian Retirement Planning Tool - Admin Interface
 
 ### Project Overview
+
 This document defines the complete scope for the admin panel of the Indian retirement planning tool, focusing on compliance, moderation, commerce, and content management. The admin panel will be built using Next.js with shadcn/ui components and follow modern admin dashboard patterns.
 
 ---
@@ -9,6 +11,7 @@ This document defines the complete scope for the admin panel of the Indian retir
 ## 1. Sidebar Navigation (Final IA)
 
 ### Core Structure
+
 - **Framework**: Use Sidebar, ScrollArea, Accordion, Command (cmd-K), Tooltip, Badge, Separator, UserNav from shadcn/ui
 - **Icons**: lucide-react icon library
 - **Organization**: Top to bottom, grouped by daily workflows
@@ -16,9 +19,11 @@ This document defines the complete scope for the admin panel of the Indian retir
 ### Navigation Modules
 
 #### 1.1 Overview
+
 - Dashboard (main landing page)
 
 #### 1.2 Operations
+
 - **KYC Review**
   - Queues: Pending, Rejected, Verified
   - SLA monitoring and aging
@@ -43,6 +48,7 @@ This document defines the complete scope for the admin panel of the Indian retir
   - Cases raised from bidding/deals
 
 #### 1.3 Commercials
+
 - **Commission Rules**
   - By product/category/sub-category/brand
   - Effective date management
@@ -52,12 +58,14 @@ This document defines the complete scope for the admin panel of the Indian retir
   - Webhook retries, T+1 ledger
 
 #### 1.4 Catalog & Compliance
+
 - **Masters**
   - Categories, Sub-categories, Brands, Units, Locations
 - **State Authorization Map**
   - Regulated materials access control
 
 #### 1.5 Content
+
 - **CMS Pages & Banners**
   - WYSIWYG editor for static content
 - **News Carousel**
@@ -65,12 +73,14 @@ This document defines the complete scope for the admin panel of the Indian retir
   - 24h cache management
 
 #### 1.6 Reports
+
 - **Analytics**
   - GMV, Take-Rate, Conversion, Funnel, Cohorts, State Compliance
 - **Audit Logs**
   - Append-only actions trail
 
 #### 1.7 Integrations & Settings
+
 - **Integrations**
   - KYC, Payment Gateway, WhatsApp, News, Search
 - **Roles & Permissions**
@@ -83,6 +93,7 @@ This document defines the complete scope for the admin panel of the Indian retir
 ## 2. Main Admin Dashboard
 
 ### 2.1 Top KPI Strip (Cards)
+
 - **User Metrics**
   - Registered Users (Buyers / Sellers / Both)
 - **KYC Status**
@@ -98,6 +109,7 @@ This document defines the complete scope for the admin panel of the Indian retir
   - Expiring 48-hr Contact Windows (count)
 
 ### 2.2 Charts Section
+
 - **GMV & Take-Rate Over Time**
   - Area chart with line overlay
 - **Live Bidding Activity**
@@ -109,6 +121,7 @@ This document defines the complete scope for the admin panel of the Indian retir
   - State Compliance Heatmap (violations/authorizations)
 
 ### 2.3 Operational Tables (Paginated)
+
 - **Recent KYC Submissions**
   - Company, GST/PAN flags, submitted at, reviewer, status
   - Actions: Approve/Reject/Annotate (Dialog with reason)
@@ -129,6 +142,7 @@ This document defines the complete scope for the admin panel of the Indian retir
   - Actions: Approve, Edit, Discard, Pin
 
 ### 2.4 Shortcuts & Utilities
+
 - **Command Palette (⌘K)**
   - Jump to user, listing, auction, invoice by ID
   - Quick actions: "Create Commission Rule", "Add Category/Brand", "Publish Banner", "Sync Search Index"
@@ -138,84 +152,115 @@ This document defines the complete scope for the admin panel of the Indian retir
 ## 3. Key Screen Specifications
 
 ### 3.1 KYC Review
+
 **Columns:**
+
 - Entity, GST, PAN/Aadhaar, Docs, Submitted, Notes, Status
 
 **Row Actions:**
+
 - View (Side Sheet), Approve/Reject (Dialog with reason), Assign Reviewer
 
 ### 3.2 Listings Moderation
+
 **Columns:**
+
 - Seller, Product, Type (Fixed/Negotiation/Bidding), Base Price/MOQ, Changes vs last version, Flags
 
 **Actions:**
+
 - Approve (rate-only auto-approve), Send Back, Version Diff
 
 ### 3.3 Requirements Moderation
+
 **Columns:**
+
 - Buyer, Material/Qty/Unit, Mode (Quick Quote/Reverse), Location/State, Regulated? (auth needed)
 
 **Actions:**
+
 - Approve, Block, Request Authorization Proof
 
 ### 3.4 Bidding Monitor (Reverse / Traditional)
+
 **Live Grid:**
+
 - Product, total qty vs filled, highest/lowest (or best), #bidders, end timer, alerts
 
 **Actions:**
+
 - Open Room, Pause, End, Split Allocation Aid (for seller-led), View Bid Table
 
 ### 3.5 Chat Moderation
+
 **Features:**
+
 - Filters hit: phone/email/profanity/sensitive terms
 - Action log
 - Per-user sanctions
 
 ### 3.6 Commission Rules
+
 **Scope Selectors:**
+
 - Product → Category → Sub-category → Brand
 - Rule value
 - Effective dates
 
 **Preview:**
+
 - Impact on last 30 days deals
 
 ### 3.7 Invoices & Payments
+
 **Features:**
+
 - Invoice list with statuses
 - Consolidated invoices
 - Export CSV
 - Webhook status & retry
 
 ### 3.8 Masters & Authorization Map
+
 **CRUD Operations:**
+
 - Category/Brand/Units/Locations
 - State-wise restriction matrix for regulated materials
 
 ### 3.9 CMS & News
+
 **Features:**
+
 - Pages/Banners (WYSIWYG)
 - News moderation queue with 24h TTL cache controls
 
 ### 3.10 Reports & Audit
+
 **Prebuilt Dashboards:**
+
 - GMV/Take-Rate/Funnel/Cohorts/Compliance + export
 
 **Audit Trail:**
+
 - Full audit trail (actor, action, entity, before/after, timestamp)
 
 ### 3.11 Integrations
+
 **Provider Management:**
+
 - Provider credentials (masked)
 - Webhook endpoints
 - Health/last event
 - Test ping
 
 ### 3.12 Settings (RBAC)
+
 **Roles:**
+
 - Super Admin, Compliance, Moderator, Finance, CMS Editor, Support
 
 **Features:**
+
 - Permission matrix per sidebar module
 
 ---
@@ -223,7 +268,9 @@ This document defines the complete scope for the admin panel of the Indian retir
 ## 4. Technical Requirements
 
 ### 4.1 Component Library
+
 **Shadcn/ui Components:**
+
 - **Layout**: Sidebar, ResizablePanel, ScrollArea, Breadcrumb, Tabs
 - **Data**: Table (TanStack integration), Badge, DropdownMenu, Select, Popover (date range), Pagination, Skeleton, Progress
 - **Feedback**: Alert, AlertDialog, Dialog, Toast
@@ -231,11 +278,13 @@ This document defines the complete scope for the admin panel of the Indian retir
 - **Media/meta**: Avatar, Tooltip, Separator, Sheet (side panels)
 
 ### 4.2 Charts & Data Visualization
+
 - **Library**: Recharts
 - **Chart Types**: Area, Bar, Pie charts
 - **Real-time**: WebSocket integration for live data
 
 ### 4.3 Data Management
+
 - **Tables**: TanStack Table integration
 - **Pagination**: Built-in pagination for all data tables
 - **Search**: Global search with command palette
@@ -246,6 +295,7 @@ This document defines the complete scope for the admin panel of the Indian retir
 ## 5. Scope Guards (Important)
 
 ### 5.1 Out of Scope (Do Not Add)
+
 - B2C storefront
 - Logistics/insurance bookings
 - Inventory/ERP/CRM systems
@@ -256,12 +306,14 @@ This document defines the complete scope for the admin panel of the Indian retir
 - Native mobile applications
 
 ### 5.2 Language & Currency
+
 - Language/currency management for end users is not part of admin MVP
 - Keep admin focused on compliance, moderation, commerce, and content per SOW
 - Static currency mentions in forms are allowed
 - Dynamic FX conversion is forbidden
 
 ### 5.3 Change Request Process
+
 - If out-of-scope features are identified during UI ideation, park under change-request
 - All scope changes must go through proper approval process
 
@@ -270,12 +322,14 @@ This document defines the complete scope for the admin panel of the Indian retir
 ## 6. Implementation Notes
 
 ### 6.1 Development Approach
+
 - Build completely autonomously without asking for permissions or clarifications
 - Follow PRD and implementation plan
 - Make reasonable decisions independently
 - Deliver final working application
 
 ### 6.2 Priority Order
+
 1. Core navigation and layout
 2. Dashboard widgets and KPIs
 3. Key operational screens (KYC, Moderation, Bidding)
@@ -284,6 +338,7 @@ This document defines the complete scope for the admin panel of the Indian retir
 6. Integrations and settings
 
 ### 6.3 Quality Standards
+
 - Modern, responsive admin interface
 - Consistent component usage
 - Proper error handling and loading states
@@ -292,4 +347,4 @@ This document defines the complete scope for the admin panel of the Indian retir
 
 ---
 
-*This scope document serves as the definitive guide for the Indian retirement planning tool admin panel development. All features and requirements are to be implemented as specified without deviation unless explicitly approved through change request process.*
+_This scope document serves as the definitive guide for the Indian retirement planning tool admin panel development. All features and requirements are to be implemented as specified without deviation unless explicitly approved through change request process._
