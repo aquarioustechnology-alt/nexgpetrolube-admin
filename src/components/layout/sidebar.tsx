@@ -30,11 +30,11 @@ import {
   Settings,
   Zap,
   Building2,
-  Package,
   Truck,
   MessageCircle,
   HelpCircle,
 } from 'lucide-react'
+import { Logo } from '@/components/logo'
 
 const navigation = [
   {
@@ -238,11 +238,14 @@ export function Sidebar() {
         isCollapsed ? 'w-16' : 'w-64'
       )}
     >
-      <div className="flex h-16 items-center justify-between border-b px-4">
-        {!isCollapsed && (
-          <div className="flex items-center space-x-2">
-            <Package className="h-6 w-6 text-primary" />
-            <span className="font-semibold">NexGPetrolube</span>
+      <div className="flex h-24 items-center justify-between border-b px-2">
+        {!isCollapsed ? (
+          <div className="flex w-full items-center justify-center">
+            <Logo />
+          </div>
+        ) : (
+          <div className="flex w-full items-center justify-center">
+            <Logo />
           </div>
         )}
         <Button
