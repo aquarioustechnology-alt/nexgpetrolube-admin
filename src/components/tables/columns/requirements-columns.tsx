@@ -1,3 +1,9 @@
+/**
+ * Requirements Table Columns
+ *
+ * Defines column configuration for the requirements data table including urgency/status badges
+ * and action buttons with proper accessibility labels.
+ */
 'use client'
 
 import { ColumnDef } from '@tanstack/react-table'
@@ -39,7 +45,14 @@ export const requirementsColumns: ColumnDef<RequirementRow>[] = [
     header: 'Urgency',
     cell: ({ getValue }) => {
       const v = getValue<string>()
-      const variant = v.toLowerCase() as any
+      const variant =
+        v.toLowerCase() === 'urgent'
+          ? 'destructive'
+          : v.toLowerCase() === 'high'
+            ? 'seller'
+            : v.toLowerCase() === 'medium'
+              ? 'secondary'
+              : 'buyer'
       return <Badge variant={variant}>{v}</Badge>
     },
     enableColumnFilter: true,
@@ -49,7 +62,12 @@ export const requirementsColumns: ColumnDef<RequirementRow>[] = [
     header: 'Status',
     cell: ({ getValue }) => {
       const v = getValue<string>()
-      const variant = v.toLowerCase() as any
+      const variant =
+        v.toLowerCase() === 'open'
+          ? 'default'
+          : v.toLowerCase() === 'quoted'
+            ? 'verified'
+            : 'secondary'
       return <Badge variant={variant}>{v}</Badge>
     },
     enableColumnFilter: true,
@@ -105,7 +123,12 @@ export const requirementsColumns: ColumnDef<RequirementRow>[] = [
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8"
+              aria-label="Open requirement actions menu"
+            >
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>

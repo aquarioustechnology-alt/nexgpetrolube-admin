@@ -1,3 +1,9 @@
+/**
+ * Listings Moderation Page
+ *
+ * Admin interface for reviewing and moderating seller listings.
+ * Supports Fixed, Negotiation, and Bidding listing types with approval workflow.
+ */
 'use client'
 
 import { DataTable } from '@/components/tables/data-table'

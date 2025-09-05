@@ -1,3 +1,9 @@
+/**
+ * Requirements Moderation Page
+ *
+ * Admin interface for monitoring buyer requirements and seller responses.
+ * Displays requirement statistics and provides filtering capabilities.
+ */
 'use client'
 
 import {

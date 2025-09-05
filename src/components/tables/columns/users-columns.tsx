@@ -1,3 +1,9 @@
+/**
+ * Users Table Columns
+ *
+ * Defines column configuration for the users data table including role/KYC badges
+ * and action dropdown menu with proper accessibility labels.
+ */
 'use client'
 
 import { ColumnDef } from '@tanstack/react-table'
@@ -14,7 +20,17 @@ import {
 } from '@/components/ui/dropdown-menu'
 import type { UserRow } from '@/lib/types'
 
-export const usersColumns: ColumnDef<UserRow>[] = [
+type UsersColumnsProps = {
+  onView: (user: UserRow) => void
+  onEdit: (user: UserRow) => void
+  onDisable: (user: UserRow) => void
+}
+
+export const createUsersColumns = ({
+  onView,
+  onEdit,
+  onDisable,
+}: UsersColumnsProps): ColumnDef<UserRow>[] => [
   {
     accessorKey: 'company',
     header: 'Company',
@@ -32,7 +48,8 @@ export const usersColumns: ColumnDef<UserRow>[] = [
     header: 'Role',
     cell: ({ getValue }) => {
       const v = getValue<string>()
-      return <Badge variant={v.toLowerCase() as any}>{v}</Badge>
+      const variant = v.toLowerCase() as 'buyer' | 'seller' | 'both'
+      return <Badge variant={variant}>{v}</Badge>
     },
     enableColumnFilter: true,
   },
@@ -41,7 +58,7 @@ export const usersColumns: ColumnDef<UserRow>[] = [
     header: 'KYC',
     cell: ({ getValue }) => {
       const v = getValue<string>()
-      const variant = v.toLowerCase() as any
+      const variant = v.toLowerCase() === 'verified' ? 'verified' : 'secondary'
       return <Badge variant={variant}>{v}</Badge>
     },
   },
@@ -56,25 +73,27 @@ export const usersColumns: ColumnDef<UserRow>[] = [
     cell: ({ row }) => (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon" className="h-8 w-8">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            aria-label="Open user actions menu"
+          >
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          <DropdownMenuItem
-            onClick={() => console.log('View', row.original.id)}
-          >
+          <DropdownMenuItem onClick={() => onView(row.original)}>
             View
           </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => console.log('Edit', row.original.id)}
-          >
+          <DropdownMenuItem onClick={() => onEdit(row.original)}>
             Edit
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            onClick={() => console.log('Disable', row.original.id)}
+            onClick={() => onDisable(row.original)}
+            className="text-destructive focus:text-destructive"
           >
             Disable
           </DropdownMenuItem>

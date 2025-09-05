@@ -37,23 +37,55 @@ import { useToast } from '@/hooks/use-toast'
 import { KpiRow } from '@/components/kpi/kpi-row'
 import { KpiCard } from '@/components/kpi/kpi-card'
 import { KPI } from '@/lib/page-kpis'
+import KycDetailsModal from '@/components/kyc/kyc-details-modal'
+import type { KycSubmission } from '@/lib/types/kyc'
 
 export default function KYCReviewPage() {
   const { toast } = useToast()
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
-  const [selectedItem, setSelectedItem] = useState<any>(null)
+  const [selectedItem, setSelectedItem] = useState<KycSubmission | null>(null)
+  const [kycSubmissions, setKycSubmissions] = useState<KycSubmission[]>(kycData)
 
   // Use the KPI mapping
-  const kpis = KPI.kyc(kycData)
+  const kpis = KPI.kyc(kycSubmissions)
 
-  const filteredData = kycData.filter(item => {
+  const filteredData = kycSubmissions.filter(item => {
     const matchesSearch =
       item.entity.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.gst.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesStatus = statusFilter === 'all' || item.status === statusFilter
     return matchesSearch && matchesStatus
   })
+
+  const handleApprove = (id: string) => {
+    setKycSubmissions(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, status: 'Verified' as const } : item
+      )
+    )
+    toast({
+      title: 'KYC Approved',
+      description: 'KYC submission has been approved successfully',
+    })
+    toast({
+      title: 'Activation email sent (mock)',
+      description: 'User will receive a set-password link.',
+    })
+    // TODO(CR-A1): replace with backend email when available.
+  }
+
+  const handleReject = (id: string, reason: string) => {
+    setKycSubmissions(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, status: 'Rejected' as const } : item
+      )
+    )
+    toast({
+      title: 'KYC Rejected',
+      description: `KYC submission rejected: ${reason}`,
+    })
+  }
 
   const handleAction = (action: string, item: any) => {
     toast({
@@ -63,7 +95,7 @@ export default function KYCReviewPage() {
   }
 
   const getStatusCount = (status: string) => {
-    return kycData.filter(item => item.status === status).length
+    return kycSubmissions.filter(item => item.status === status).length
   }
 
   return (
@@ -114,7 +146,7 @@ export default function KYCReviewPage() {
           </CardHeader>
           <CardContent className="p-5">
             <div className="nums text-3xl font-semibold tracking-tight md:text-4xl">
-              {getStatusCount('pending')}
+              {getStatusCount('Pending')}
             </div>
           </CardContent>
         </Card>
@@ -126,7 +158,7 @@ export default function KYCReviewPage() {
           </CardHeader>
           <CardContent className="p-5">
             <div className="nums text-3xl font-semibold tracking-tight md:text-4xl">
-              {getStatusCount('approved')}
+              {getStatusCount('Verified')}
             </div>
           </CardContent>
         </Card>
@@ -138,7 +170,7 @@ export default function KYCReviewPage() {
           </CardHeader>
           <CardContent className="p-5">
             <div className="nums text-3xl font-semibold tracking-tight md:text-4xl">
-              {getStatusCount('rejected')}
+              {getStatusCount('Rejected')}
             </div>
           </CardContent>
         </Card>
@@ -168,9 +200,9 @@ export default function KYCReviewPage() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="pending">Pending</SelectItem>
-                <SelectItem value="approved">Approved</SelectItem>
-                <SelectItem value="rejected">Rejected</SelectItem>
+                <SelectItem value="Pending">Pending</SelectItem>
+                <SelectItem value="Verified">Approved</SelectItem>
+                <SelectItem value="Rejected">Rejected</SelectItem>
               </SelectContent>
             </Select>
             <Button variant="outline">
@@ -203,9 +235,9 @@ export default function KYCReviewPage() {
                       <h3 className="font-semibold">{item.entity}</h3>
                       <Badge
                         variant={
-                          item.status === 'pending'
+                          item.status === 'Pending'
                             ? 'secondary'
-                            : item.status === 'approved'
+                            : item.status === 'Verified'
                               ? 'verified'
                               : 'destructive'
                         }
@@ -222,28 +254,23 @@ export default function KYCReviewPage() {
                       </div>
                       <div>
                         <span className="font-medium">Aadhaar:</span>{' '}
-                        {item.aadhaar}
+                        {item.aadhaarMasked}
                       </div>
                       <div>
                         <span className="font-medium">Submitted:</span>{' '}
                         <span className="nums">
-                          {new Date(item.submitted).toLocaleDateString()}
+                          {new Date(item.submittedAt).toLocaleDateString()}
                         </span>
                       </div>
                     </div>
                     <div className="text-sm">
                       <span className="font-medium">Documents:</span>{' '}
-                      {item.docs.join(', ')}
+                      {item.documents.length} files
                     </div>
                     {item.reviewer && (
                       <div className="text-sm">
                         <span className="font-medium">Reviewer:</span>{' '}
                         {item.reviewer}
-                      </div>
-                    )}
-                    {item.notes && (
-                      <div className="text-sm">
-                        <span className="font-medium">Notes:</span> {item.notes}
                       </div>
                     )}
                   </div>
@@ -258,7 +285,7 @@ export default function KYCReviewPage() {
                       View
                     </Button>
 
-                    {item.status === 'pending' && (
+                    {item.status === 'Pending' && (
                       <>
                         <Button
                           size="sm"
@@ -300,132 +327,15 @@ export default function KYCReviewPage() {
         </CardContent>
       </Card>
 
-      {/* View Details Side Sheet would go here */}
+      {/* Enhanced KYC Details Modal */}
       {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="mx-4 max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-background p-6">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-semibold">
-                KYC Details - {selectedItem.entity}
-              </h2>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setSelectedItem(null)}
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium text-muted-foreground">
-                    Entity Name
-                  </label>
-                  <p className="font-medium">{selectedItem.entity}</p>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-muted-foreground">
-                    Status
-                  </label>
-                  <Badge
-                    variant={
-                      selectedItem.status === 'pending'
-                        ? 'secondary'
-                        : selectedItem.status === 'approved'
-                          ? 'verified'
-                          : 'destructive'
-                    }
-                  >
-                    {selectedItem.status}
-                  </Badge>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-muted-foreground">
-                    GST Number
-                  </label>
-                  <p className="font-mono">{selectedItem.gst}</p>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-muted-foreground">
-                    PAN Number
-                  </label>
-                  <p className="font-mono">{selectedItem.pan}</p>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-muted-foreground">
-                    Aadhaar
-                  </label>
-                  <p className="font-mono">{selectedItem.aadhaar}</p>
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-muted-foreground">
-                    Submitted
-                  </label>
-                  <p className="nums">
-                    {new Date(selectedItem.submitted).toLocaleString()}
-                  </p>
-                </div>
-              </div>
-
-              <div>
-                <label className="text-sm font-medium text-muted-foreground">
-                  Documents
-                </label>
-                <div className="mt-1 space-y-1">
-                  {selectedItem.docs.map((doc: string, index: number) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-600" />
-                      <span>{doc}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {selectedItem.reviewer && (
-                <div>
-                  <label className="text-sm font-medium text-muted-foreground">
-                    Reviewer
-                  </label>
-                  <p>{selectedItem.reviewer}</p>
-                </div>
-              )}
-
-              {selectedItem.notes && (
-                <div>
-                  <label className="text-sm font-medium text-muted-foreground">
-                    Notes
-                  </label>
-                  <p className="mt-1 rounded-md bg-muted p-3">
-                    {selectedItem.notes}
-                  </p>
-                </div>
-              )}
-            </div>
-
-            <div className="mt-6 flex justify-end gap-2 border-t pt-4">
-              {selectedItem.status === 'pending' && (
-                <>
-                  <Button onClick={() => handleAction('Approve', selectedItem)}>
-                    <CheckCircle className="mr-1 h-4 w-4" />
-                    Approve
-                  </Button>
-                  <Button
-                    variant="seller"
-                    onClick={() => handleAction('Reject', selectedItem)}
-                  >
-                    <X className="mr-1 h-4 w-4" />
-                    Reject
-                  </Button>
-                </>
-              )}
-              <Button variant="outline" onClick={() => setSelectedItem(null)}>
-                Close
-              </Button>
-            </div>
-          </div>
-        </div>
+        <KycDetailsModal
+          open={!!selectedItem}
+          onOpenChange={open => !open && setSelectedItem(null)}
+          submission={selectedItem}
+          onApprove={handleApprove}
+          onReject={handleReject}
+        />
       )}
     </div>
   )

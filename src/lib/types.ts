@@ -1,39 +1,33 @@
-export type UserRole = 'Buyer' | 'Seller' | 'Both'
-export type KycStatus = 'Pending' | 'Verified' | 'Rejected'
-export type ListingStatus = 'Pending' | 'Approved' | 'Rejected'
-export type ListingType = 'Fixed' | 'Negotiation' | 'Bidding'
-export type RequirementStatus = 'Open' | 'Quoted' | 'Closed'
-export type RequirementUrgency = 'Low' | 'Medium' | 'High' | 'Urgent'
+/**
+ * Shared Types
+ *
+ * Re-exports types from zod schemas for consistency across the application.
+ * All types are now defined in their respective schema files.
+ */
 
-export type UserRow = {
-  id: string
-  company: string
-  email: string
-  phone: string
-  role: UserRole
-  kyc: KycStatus
-  createdAt: string
-}
+// Re-export types from schemas
+export type {
+  UserRole,
+  KycStatus,
+  UserRow,
+  UserCreate,
+  UserUpdate,
+} from './schemas/users'
 
-export type ListingRow = {
-  id: string
-  product: string
-  seller: string
-  type: ListingType
-  basePrice: number
-  moq: string
-  status: ListingStatus
-  submittedAt: string
-}
+export type {
+  ListingType,
+  ListingStatus,
+  ListingRow,
+  ListingCreate,
+  ListingUpdate,
+  ListingModeration,
+} from './schemas/listings'
 
-export type RequirementRow = {
-  id: string
-  title: string
-  buyer: string
-  quantity: string
-  urgency: RequirementUrgency
-  status: RequirementStatus
-  quotes: number
-  deadline: string
-  postedAt: string
-}
+export type {
+  RequirementStatus,
+  RequirementUrgency,
+  RequirementRow,
+  RequirementCreate,
+  RequirementUpdate,
+  RequirementQuote,
+} from './schemas/requirements'

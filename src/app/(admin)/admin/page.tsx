@@ -1,3 +1,9 @@
+/**
+ * Admin Dashboard Page
+ *
+ * Main dashboard providing overview of platform metrics, recent activities,
+ * and quick access to common administrative tasks.
+ */
 'use client'
 
 import {

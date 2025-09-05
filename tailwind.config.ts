@@ -17,16 +17,15 @@ const config: Config = {
         sans: ['var(--font-geist-sans)', ...fontFamily.sans],
         mono: ['var(--font-geist-mono)', ...fontFamily.mono],
       },
-      // 15px base, slightly denser headings
       fontSize: {
-        xs: ['0.75rem', '1rem'], // 12 / 16
-        sm: ['0.8125rem', '1.25rem'], // 13 / 20
-        base: ['0.9375rem', '1.5rem'], // 15 / 24  <-- default body
-        lg: ['1.0625rem', '1.5rem'], // 17 / 24
-        xl: ['1.25rem', '1.4'], // 20 / 28
-        '2xl': ['1.5rem', '1.25'], // 24 / 30
-        '3xl': ['1.875rem', '1.2'], // 30 / 36
-        '4xl': ['2.25rem', '1.15'], // 36 / 41
+        xs: ['0.75rem', '1rem'],
+        sm: ['0.8125rem', '1.25rem'],
+        base: ['0.9375rem', '1.5rem'],
+        lg: ['1.0625rem', '1.5rem'],
+        xl: ['1.25rem', '1.4'],
+        '2xl': ['1.5rem', '1.25'],
+        '3xl': ['1.875rem', '1.2'],
+        '4xl': ['2.25rem', '1.15'],
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -62,6 +61,13 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        chart: {
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -70,12 +76,20 @@ const config: Config = {
       },
       keyframes: {
         'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
         },
         'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
         },
       },
       animation: {

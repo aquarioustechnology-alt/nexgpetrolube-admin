@@ -10,6 +10,7 @@ export const usersMock: UserRow[] = [
     role: 'Both',
     kyc: 'Verified',
     createdAt: '2024-01-15',
+    disabled: false,
   },
   {
     id: '2',
@@ -19,6 +20,7 @@ export const usersMock: UserRow[] = [
     role: 'Both',
     kyc: 'Verified',
     createdAt: '2024-01-14',
+    disabled: false,
   },
   {
     id: '3',
@@ -28,6 +30,7 @@ export const usersMock: UserRow[] = [
     role: 'Buyer',
     kyc: 'Pending',
     createdAt: '2024-01-10',
+    disabled: false,
   },
   {
     id: '4',
@@ -37,6 +40,7 @@ export const usersMock: UserRow[] = [
     role: 'Both',
     kyc: 'Verified',
     createdAt: '2024-01-12',
+    disabled: false,
   },
   {
     id: '5',
@@ -46,5 +50,14 @@ export const usersMock: UserRow[] = [
     role: 'Seller',
     kyc: 'Rejected',
     createdAt: '2024-01-08',
+    disabled: true,
   },
 ]
+
+/**
+ * Check if an email already exists in the system
+ * Used for email de-duplication in user creation wizard
+ */
+export function emailExists(email: string): boolean {
+  return usersMock.some(u => u.email?.toLowerCase() === email.toLowerCase())
+}

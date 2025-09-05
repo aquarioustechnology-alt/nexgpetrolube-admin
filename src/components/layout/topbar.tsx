@@ -8,7 +8,14 @@ import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { ThemeToggle } from './theme-toggle'
 import { CommandMenu } from '@/components/search/command-menu'
-import { Search, Bell, User, ChevronRight } from 'lucide-react'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { Search, Bell, User, ChevronRight, LogOut } from 'lucide-react'
+import { logoutAdmin } from '@/lib/logout'
 
 function Breadcrumb() {
   const pathname = usePathname()
@@ -64,10 +71,20 @@ export function Topbar() {
 
         <Separator orientation="vertical" className="h-6" />
 
-        <Button variant="ghost" size="sm" className="h-9 px-3">
-          <User className="mr-2 h-4 w-4" />
-          Admin User
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="sm" className="h-9 px-3">
+              <User className="mr-2 h-4 w-4" />
+              Admin User
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuItem onClick={logoutAdmin}>
+              <LogOut className="mr-2 h-4 w-4" />
+              Logout
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       <CommandMenu open={searchOpen} onOpenChange={setSearchOpen} />

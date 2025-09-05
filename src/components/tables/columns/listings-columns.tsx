@@ -1,3 +1,9 @@
+/**
+ * Listings Table Columns
+ *
+ * Defines column configuration for the listings data table including type/status badges
+ * and action buttons with proper accessibility labels.
+ */
 'use client'
 
 import { ColumnDef } from '@tanstack/react-table'
@@ -32,7 +38,12 @@ export const listingsColumns: ColumnDef<ListingRow>[] = [
     header: 'Type',
     cell: ({ getValue }) => {
       const v = getValue<string>()
-      const variant = v.toLowerCase() as any
+      const variant =
+        v.toLowerCase() === 'fixed'
+          ? 'default'
+          : v.toLowerCase() === 'negotiation'
+            ? 'secondary'
+            : 'outline'
       return <Badge variant={variant}>{v}</Badge>
     },
     enableColumnFilter: true,
@@ -54,7 +65,12 @@ export const listingsColumns: ColumnDef<ListingRow>[] = [
     header: 'Status',
     cell: ({ getValue }) => {
       const v = getValue<string>()
-      const variant = v.toLowerCase() as any
+      const variant =
+        v.toLowerCase() === 'approved'
+          ? 'verified'
+          : v.toLowerCase() === 'rejected'
+            ? 'destructive'
+            : 'secondary'
       return <Badge variant={variant}>{v}</Badge>
     },
     enableColumnFilter: true,
@@ -93,7 +109,12 @@ export const listingsColumns: ColumnDef<ListingRow>[] = [
           )}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-8 w-8">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8"
+                aria-label="Open listing actions menu"
+              >
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
